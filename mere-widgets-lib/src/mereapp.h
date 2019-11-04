@@ -13,6 +13,9 @@ public:
     QString code() const;
     void setCode(QString code);
 
+private:
+    virtual void initStyle() = 0;
+
 signals:
     void codeChanged(const QString &code);
 

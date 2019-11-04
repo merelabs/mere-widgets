@@ -17,6 +17,7 @@ CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 SOURCES += \
     src/mereapp.cpp \
+    src/meredefaultapp.cpp \
     src/meredefaultwin.cpp \
     src/merestatusbar.cpp \
     src/merewidgetresizer.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 
 HEADERS += \
     src/mereapp.h \
+    src/meredefaultapp.h \
     src/meredefaultwin.h \
     src/merestatusbar.h \
     src/merewidgetresizer.h \
