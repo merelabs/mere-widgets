@@ -1,3 +1,6 @@
+include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
+include(../../mere-log/mere-log-lib/mere-log-lib.pri)
+
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

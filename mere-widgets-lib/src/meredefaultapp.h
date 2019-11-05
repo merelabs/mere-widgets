@@ -12,6 +12,8 @@ class MereDefaultApp : public MereApp
 public:
     explicit MereDefaultApp(int &argc, char **argv);
 
+    void init();
+
 private:
     virtual void initStyle() override;
     virtual void applyStyle(QString style);

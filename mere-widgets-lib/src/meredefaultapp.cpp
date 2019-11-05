@@ -7,12 +7,16 @@
 MereDefaultApp::MereDefaultApp(int &argc, char **argv)
     : MereApp(argc, argv)
 {
+}
+
+void MereDefaultApp::init()
+{
     initStyle();
 }
 
 void MereDefaultApp::initStyle()
 {
-    QString code = this->code();
+    QString code = this->appCode();
     if (MereStringUtils::isBlank(code))
     {
         qDebug() << "Style initialization faile as no app-code found.";
