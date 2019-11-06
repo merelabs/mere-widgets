@@ -5,13 +5,13 @@
 
 #include <QWidget>
 
-class MereShadowWidget : public QWidget, public MereResizeableWidget
+class MereShadowWidget : public QWidget, public MereResizeable
 {
     Q_OBJECT
 public:
     explicit MereShadowWidget(QWidget *parent = nullptr);
 
-    void setResizer(MereWidgetResizer *resizer);
+//    void setResizer(MereWidgetResizer *resizer);
     void adjustSize(const QSize &size);
 
 protected:
