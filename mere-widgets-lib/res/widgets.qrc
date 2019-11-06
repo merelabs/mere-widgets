@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/widgets">
+        <file>resize.png</file>
+        <file>close.png</file>
+    </qresource>
+</RCC>
