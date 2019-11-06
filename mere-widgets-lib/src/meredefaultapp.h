@@ -12,7 +12,7 @@ class MereDefaultApp : public MereApp
 public:
     explicit MereDefaultApp(int &argc, char **argv);
 
-    void init();
+    virtual void init();
 
 private:
     virtual void initStyle() override;

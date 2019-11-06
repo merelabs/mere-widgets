@@ -48,5 +48,6 @@ void MereDefaultApp::applyStyle(QString style)
         return;
     }
 
+    qDebug() << "Applying following stylesheet: " << style;
     setStyleSheet(styleSheet);
 }
