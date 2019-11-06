@@ -16,12 +16,16 @@ DEFINES += LIB_NAME=\\\"$$TARGET\\\"
 DEFINES += LIB_VERSION=\\\"$$VERSION\\\"
 DEFINES += QT_DEPRECATED_WARNINGS MERE_WIDGETS_LIB
 
-CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
+#CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 SOURCES += \
     src/mereapp.cpp \
     src/meredefaultapp.cpp \
     src/meredefaultwin.cpp \
+    src/meredefaultwinheader.cpp \
+    src/mereeditablelabel.cpp \
+    src/mereresizeablewin.cpp \
+    src/meresimplewinheader.cpp \
     src/merestatusbar.cpp \
     src/merewidgetresizer.cpp \
     src/merepushmenu.cpp \
@@ -30,13 +34,18 @@ SOURCES += \
     src/mereclickdetector.cpp \
     src/mereshadowwidget.cpp \
     src/merewin.cpp \
-    src/merewindefaultheader.cpp \
     src/merewinheader.cpp
 
 HEADERS += \
     src/mereapp.h \
     src/meredefaultapp.h \
     src/meredefaultwin.h \
+    src/meredefaultwinheader.h \
+    src/mereeditablelabel.h \
+    src/meremoveable.h \
+    src/mereresizeable.h \
+    src/mereresizeablewin.h \
+    src/meresimplewinheader.h \
     src/merestatusbar.h \
     src/merewidgetresizer.h \
     src/merepushmenu.h \
@@ -46,7 +55,6 @@ HEADERS += \
     src/mereclickdetector.h \
     src/mereshadowwidget.h \
     src/merewin.h \
-    src/merewindefaultheader.h \
     src/merewinheader.h
 
 DESTDIR = $$PWD/../lib
@@ -88,3 +96,6 @@ unix {
         eval(INSTALLS *= headers_$${path})
     }
 }
+
+RESOURCES += \
+    res/widgets.qrc
