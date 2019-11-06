@@ -3,14 +3,19 @@
 #include <QLabel>
 #include <QMouseEvent>
 
-MereWidgetResizer::MereWidgetResizer(MereResizeableWidget *resizeableWidget, QWidget *parent)
-    : QWidget(parent),
-      m_resizeableWidget(resizeableWidget)
+MereWidgetResizer::MereWidgetResizer(MereResizeable *resizeable)
+    : m_resizeable(resizeable)
 {
     setCursor(QCursor(Qt::SizeFDiagCursor));
 
+    QPalette pal = palette();
+    pal.setColor(QPalette::Background, Qt::red);
+    setAutoFillBackground(true);
+    setPalette(pal);
+
     QLabel *label = new QLabel(this);
-    label->setPixmap(QPixmap(":/pkg/resize.png"));
+    label->setStyleSheet("background-color:red");
+    label->setPixmap(QPixmap(":/widgets/resize.png"));
     label->setScaledContents(true);
     label->setContentsMargins(0,0,0,0);
     label->setMinimumSize(sizeHint());
@@ -36,8 +41,7 @@ void MereWidgetResizer::mouseReleaseEvent(QMouseEvent *event)
 
 void MereWidgetResizer::mouseMoveEvent(QMouseEvent *event)
 {
-
     const QPoint diff = event->globalPos() - m_point;
     m_point = event->globalPos();
-    m_resizeableWidget->adjustSize(QSize( diff.x(), diff.y()));
+    m_resizeable->adjustSize(QSize( diff.x(), diff.y()));
 }

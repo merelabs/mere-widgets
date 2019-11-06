@@ -1,25 +1,17 @@
 #ifndef MEREWIDGETRESIZER_H
 #define MEREWIDGETRESIZER_H
 
-#include <QDebug>
+#include "mereresizeable.h"
+
 #include <QWidget>
-#include <QPainter>
-#include <QPaintEvent>
-
-class MereWidgetResizer;
-
-class MereResizeableWidget //: public QWidget
-{
-public:
-    virtual void setResizer(MereWidgetResizer *resizer) = 0;
-    virtual void adjustSize(const QSize &size) = 0;
-};
+#include <QDebug>
 
 class MereWidgetResizer : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MereWidgetResizer(MereResizeableWidget *resizeableWidget, QWidget *parent = nullptr);
+    explicit MereWidgetResizer(MereResizeable *resizeable);
+
     QSize sizeHint() const;
 
 protected:
@@ -32,7 +24,7 @@ signals:
 public slots:
 private:
     QPoint m_point;
-    MereResizeableWidget *m_resizeableWidget;
+    MereResizeable *m_resizeable;
 };
 
 #endif // MEREWIDGETRESIZER_H

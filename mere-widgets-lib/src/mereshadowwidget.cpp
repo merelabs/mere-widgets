@@ -2,12 +2,13 @@
 
 #include <QPainter>
 #include <QVBoxLayout>
+#include <QResizeEvent>
 #include <QDesktopWidget>
 #include <QGraphicsDropShadowEffect>
 
 MereShadowWidget::MereShadowWidget(QWidget *parent)
     : QWidget(parent),
-      m_resizer(new MereWidgetResizer(this, this))
+      m_resizer(new MereWidgetResizer(this))
 {
     setWindowFlags(Qt::FramelessWindowHint);
     setWindowModality(Qt::ApplicationModal);
@@ -63,10 +64,10 @@ void MereShadowWidget::moveToCenterScreen()
     move(center);
 }
 
-void MereShadowWidget::setResizer(MereWidgetResizer *resizer)
-{
+//void MereShadowWidget::setResizer(MereWidgetResizer *resizer)
+//{
 
-}
+//}
 
 void MereShadowWidget::adjustSize(const QSize &size)
 {
