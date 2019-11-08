@@ -184,40 +184,40 @@ void MereNoteEditor::applyBackgroundColor(const QColor &color)
 
 bool MereNoteEditor::isBold(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::FontWeight, QVariant(QFont::Bold));
+    return isPropertyEnabled(cursor, QTextFormat::FontWeight, QVariant(QFont::Bold));
 }
 
 bool MereNoteEditor::isItalic(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::FontItalic, QVariant(true));
+    return isPropertyEnabled(cursor, QTextFormat::FontItalic, QVariant(true));
 }
 
 bool MereNoteEditor::isUnderline(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::FontUnderline, QVariant(true));
+    return isPropertyEnabled(cursor, QTextFormat::FontUnderline, QVariant(true));
 }
 
 bool MereNoteEditor::isOverline(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::FontOverline, QVariant(true));
+    return isPropertyEnabled(cursor, QTextFormat::FontOverline, QVariant(true));
 }
 
 bool MereNoteEditor::isStrikethrough(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::FontStrikeOut, QVariant(true));
+    return isPropertyEnabled(cursor, QTextFormat::FontStrikeOut, QVariant(true));
 }
 
 bool MereNoteEditor::isSuperscript(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSuperScript));
+    return isPropertyEnabled(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSuperScript));
 }
 
 bool MereNoteEditor::isSubscript(QTextCursor &cursor)
 {
-    return isProperty(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSubScript));
+    return isPropertyEnabled(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSubScript));
 }
 
-bool MereNoteEditor::isProperty(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value)
+bool MereNoteEditor::isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value)
 {
     bool set = true;
 
