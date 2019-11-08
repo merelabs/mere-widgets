@@ -8,13 +8,7 @@ MereWidgetResizer::MereWidgetResizer(MereResizeable *resizeable)
 {
     setCursor(QCursor(Qt::SizeFDiagCursor));
 
-    QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::red);
-    setAutoFillBackground(true);
-    setPalette(pal);
-
     QLabel *label = new QLabel(this);
-    label->setStyleSheet("background-color:red");
     label->setPixmap(QPixmap(":/widgets/resize.png"));
     label->setScaledContents(true);
     label->setContentsMargins(0,0,0,0);
