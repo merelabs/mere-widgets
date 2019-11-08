@@ -1,5 +1,6 @@
 include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
 include(../../mere-log/mere-log-lib/mere-log-lib.pri)
+include(../../mere-config/mere-config-lib/mere-config-lib.pri)
 
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -24,7 +25,11 @@ SOURCES += \
     src/meredefaultwin.cpp \
     src/meredefaultwinheader.cpp \
     src/mereeditablelabel.cpp \
+    src/merefloateditpanel.cpp \
+    src/merenoteeditor.cpp \
     src/mereresizeablewin.cpp \
+    src/meresimpleeditor.cpp \
+    src/meresimpleeditpanel.cpp \
     src/meresimplewinheader.cpp \
     src/merestatusbar.cpp \
     src/merewidgetresizer.cpp \
@@ -42,9 +47,13 @@ HEADERS += \
     src/meredefaultwin.h \
     src/meredefaultwinheader.h \
     src/mereeditablelabel.h \
+    src/merefloateditpanel.h \
     src/meremoveable.h \
+    src/merenoteeditor.h \
     src/mereresizeable.h \
     src/mereresizeablewin.h \
+    src/meresimpleeditor.h \
+    src/meresimpleeditpanel.h \
     src/meresimplewinheader.h \
     src/merestatusbar.h \
     src/merewidgetresizer.h \
