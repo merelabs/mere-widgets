@@ -1,0 +1,6 @@
+.qmake.stash
+Makefile
+include/
+lib/
+bin/
+mere-widgets.pro.user
