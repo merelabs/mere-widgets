@@ -32,7 +32,7 @@ private:
     bool isSuperscript(QTextCursor &cursor);
     bool isSubscript(QTextCursor &cursor);
 
-    bool isProperty(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value);
+    bool isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value);
 
 signals:
 
