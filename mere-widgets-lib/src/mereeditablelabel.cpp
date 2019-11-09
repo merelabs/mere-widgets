@@ -35,9 +35,9 @@ void MereEditableLabel::makeEditable()
 void MereEditableLabel::makeViewable()
 {
     updateDirtyText();
-    setTextInteractionFlags(Qt::LinksAccessibleByMouse);
     setSelection(0, 0);
     setCursor(Qt::ArrowCursor);
+    setTextInteractionFlags(Qt::LinksAccessibleByMouse);
 }
 
 void MereEditableLabel::updateDirtyText()
