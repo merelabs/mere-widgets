@@ -7,7 +7,7 @@
 
 #include <QWidget>
 
-class MereDefaultWinHeader;
+class MereWinDefaultHeader;
 
 class MereDefaultWin : public MereWin, public MereMoveable, public MereResizeable
 {
@@ -29,7 +29,7 @@ signals:
 public slots:
 
 private:
-    MereDefaultWinHeader *m_header;
+    MereWinDefaultHeader *m_header;
 //    MereWidgetMover *m_mover;
 };
 

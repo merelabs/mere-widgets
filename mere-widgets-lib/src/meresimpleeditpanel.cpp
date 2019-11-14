@@ -20,10 +20,12 @@ MereSimpleEditPanel::MereSimpleEditPanel(QWidget *parent)
 
 void MereSimpleEditPanel::initUI()
 {
-    QSize size(24, 24);
+    QSize size(16, 16);
 
     QPushButton *bold = new QPushButton("B");
-    bold->setMaximumSize(size);
+    bold->setIcon(QIcon(":/widgets/icons/16x16/bold.png"));
+    bold->setIconSize(size);
+//    bold->setMaximumSize(size);
     bold->setFlat(true);
     layout()->addWidget(bold);
 

@@ -2,5 +2,12 @@
     <qresource prefix="/widgets">
         <file>resize.png</file>
         <file>close.png</file>
+        <file>icons/16x16/bold.png</file>
+        <file>icons/16x16/bullet-list.png</file>
+        <file>icons/16x16/italic.png</file>
+        <file>icons/16x16/strike.png</file>
+        <file>icons/16x16/subscript.png</file>
+        <file>icons/16x16/superscript.png</file>
+        <file>icons/16x16/underline.png</file>
     </qresource>
 </RCC>

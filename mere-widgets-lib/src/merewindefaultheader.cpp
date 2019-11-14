@@ -1,28 +1,28 @@
-#include "meredefaultwinheader.h"
+#include "merewindefaultheader.h"
 
 #include <QHostInfo>
 #include <QPushButton>
 #include <QVBoxLayout>
 
-MereDefaultWinHeader::MereDefaultWinHeader(QWidget *parent)
+MereWinDefaultHeader::MereWinDefaultHeader(QWidget *parent)
     : MereWinHeader(parent)
 {
     setMaximumHeight(48);
 }
 
-void MereDefaultWinHeader::setHeaderStyle(MereHeaderStyle style)
+void MereWinDefaultHeader::setHeaderStyle(MereHeaderStyle style)
 {
     m_style = style;
 }
 
-void MereDefaultWinHeader::initLeftPanel()
+void MereWinDefaultHeader::initLeftPanel()
 {
     QWidget *pane = new QWidget(this);
     pane->setMaximumWidth(100);
     layout()->addWidget(pane);
 }
 
-void MereDefaultWinHeader::initCenterPanel()
+void MereWinDefaultHeader::initCenterPanel()
 {
     QWidget *pane = new QWidget(this);
     layout()->addWidget(pane);
@@ -42,7 +42,7 @@ void MereDefaultWinHeader::initCenterPanel()
      layout->addWidget(host);
 }
 
-void MereDefaultWinHeader::initRightPanel()
+void MereWinDefaultHeader::initRightPanel()
 {
     QWidget *pane = new QWidget(this);
     pane->setMaximumWidth(100);

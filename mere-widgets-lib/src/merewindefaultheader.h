@@ -1,13 +1,13 @@
-#ifndef MEREDEFAULTWINHEADER_H
-#define MEREDEFAULTWINHEADER_H
+#ifndef MEREWINDEFAULTHEADER_H
+#define MEREWINDEFAULTHEADER_H
 
 #include "merewinheader.h"
 
-class MereDefaultWinHeader : public MereWinHeader
+class MereWinDefaultHeader : public MereWinHeader
 {
     Q_OBJECT
 public:
-    explicit MereDefaultWinHeader(QWidget *parent = nullptr);
+    explicit MereWinDefaultHeader(QWidget *parent = nullptr);
     void setHeaderStyle(MereHeaderStyle style);
 
 protected:
@@ -23,4 +23,4 @@ private:
     MereHeaderStyle m_style;
 };
 
-#endif // MEREDEFAULTWINHEADER_H
+#endif // MEREWINDEFAULTHEADER_H

@@ -23,7 +23,6 @@ SOURCES += \
     src/mereapp.cpp \
     src/meredefaultapp.cpp \
     src/meredefaultwin.cpp \
-    src/meredefaultwinheader.cpp \
     src/mereeditablelabel.cpp \
     src/merefloateditpanel.cpp \
     src/merenoteeditor.cpp \
@@ -39,13 +38,13 @@ SOURCES += \
     src/mereclickdetector.cpp \
     src/mereshadowwidget.cpp \
     src/merewin.cpp \
+    src/merewindefaultheader.cpp \
     src/merewinheader.cpp
 
 HEADERS += \
     src/mereapp.h \
     src/meredefaultapp.h \
     src/meredefaultwin.h \
-    src/meredefaultwinheader.h \
     src/mereeditablelabel.h \
     src/merefloateditpanel.h \
     src/meremoveable.h \
@@ -64,6 +63,7 @@ HEADERS += \
     src/mereclickdetector.h \
     src/mereshadowwidget.h \
     src/merewin.h \
+    src/merewindefaultheader.h \
     src/merewinheader.h
 
 DESTDIR = $$PWD/../lib

@@ -1,5 +1,5 @@
 #include "meredefaultwin.h"
-#include "meredefaultwinheader.h"
+#include "merewindefaultheader.h"
 
 #include <QVBoxLayout>
 
@@ -15,7 +15,7 @@ MereDefaultWin::MereDefaultWin(QWidget *parent)
 
 void MereDefaultWin::initHeaderUI()
 {
-    m_header = new MereDefaultWinHeader();
+    m_header = new MereWinDefaultHeader();
     m_header->setTitle("Default");
 
     layout()->addWidget(m_header);
