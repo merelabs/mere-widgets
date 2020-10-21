@@ -2,8 +2,18 @@
 
 #include <QPushButton>
 
+MereSimpleWinHeader::~MereSimpleWinHeader()
+{
+    if (m_title)
+    {
+        delete m_title;
+        m_title = nullptr;
+    }
+}
+
 MereSimpleWinHeader::MereSimpleWinHeader(QWidget *parent)
-    : MereWinHeader(parent)
+    : MereWinHeader(parent),
+      m_title(nullptr)
 {
 
 }
@@ -40,4 +50,10 @@ void MereSimpleWinHeader::initRightPanel()
     layout()->addWidget(close);
     connect(close, SIGNAL(clicked(bool)), this, SLOT(close()));
 }
+
+void MereSimpleWinHeader::setTitle(const QString &title)
+{
+    m_title->setText(title);
+}
+
 

@@ -7,6 +7,7 @@
 
 MereWinHeader::MereWinHeader(QWidget *parent)
     : QWidget(parent),
+//      m_title(nullptr),
       m_lock(false)
 {
     QPalette pal = palette();
@@ -25,10 +26,11 @@ void MereWinHeader::initUI()
     initRightPanel();
 }
 
-void MereWinHeader::setTitle(const QString title)
-{
-    m_title->setText(title);
-}
+//void MereWinHeader::setTitle(const QString &title)
+//{
+//    qDebug() << "????" << title << m_title;
+////    m_title->setText(title);
+//}
 
 void MereWinHeader::mousePressEvent(QMouseEvent *event)
 {
@@ -38,6 +40,7 @@ void MereWinHeader::mousePressEvent(QMouseEvent *event)
 
 void MereWinHeader::mouseReleaseEvent(QMouseEvent *event)
 {
+    Q_UNUSED(event)
     m_lock = true;
 }
 
@@ -52,6 +55,8 @@ void MereWinHeader::mouseMoveEvent(QMouseEvent *event)
 
 void MereWinHeader::close()
 {
+    emit closed();
+
     qApp->exit();
 }
 

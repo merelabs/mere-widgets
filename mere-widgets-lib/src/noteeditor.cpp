@@ -1,8 +1,25 @@
-#include "merenoteeditor.h"
-#include "mere/utils/merestringutils.h"
+#include "noteeditor.h"
+
+#include "mere/utils/stringutils.h"
 
 #include <QHBoxLayout>
-MereNoteEditor::MereNoteEditor(QWidget *parent)
+
+Mere::Widgets::NoteEditor::~NoteEditor()
+{
+    if (m_note)
+    {
+        delete m_note;
+        m_note = nullptr;
+    }
+
+    if (m_panel)
+    {
+        delete m_panel;
+        m_panel = nullptr;
+    }
+}
+
+Mere::Widgets::NoteEditor::NoteEditor(QWidget *parent)
     : QWidget(parent),
       m_note(nullptr),
       m_panel(nullptr)
@@ -14,21 +31,22 @@ MereNoteEditor::MereNoteEditor(QWidget *parent)
 
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setContentsMargins(3, 3, 3, 3);
+    layout->setSpacing(3);
     setLayout(layout);
 
     initUI();
 }
 
-void MereNoteEditor::initUI()
+void Mere::Widgets::NoteEditor::initUI()
 {
-    m_note = new MereSimpleEditor;
+    m_note = new TextEditor;
 
     layout()->addWidget(m_note);
 
     connect(m_note, SIGNAL(selectionChanged()), this, SLOT(contentSelected()));
 }
 
-void MereNoteEditor::contentSelected()
+void Mere::Widgets::NoteEditor::contentSelected()
 {
     QTextCursor cursor = m_note->textCursor();
     if(!cursor.hasSelection())
@@ -38,7 +56,7 @@ void MereNoteEditor::contentSelected()
     }
 
     QString text = cursor.selectedText();
-    if (MereStringUtils::isBlank(text))
+    if (Mere::Utils::StringUtils::isBlank(text))
     {
         hideEditPanel();
         return;
@@ -46,7 +64,7 @@ void MereNoteEditor::contentSelected()
 
     if (!m_panel)
     {
-        m_panel = new MereFloatEditPanel(this);
+        m_panel = new EditorPanel(this);
         connect(m_panel, SIGNAL(applyBold()), this, SLOT(applyBold()));
         connect(m_panel, SIGNAL(applyItalic()), this, SLOT(applyItalic()));
         connect(m_panel, SIGNAL(applyUnderline()), this, SLOT(applyUnderline()));
@@ -64,21 +82,21 @@ void MereNoteEditor::contentSelected()
     showEditPanel();
 }
 
-void MereNoteEditor::showEditPanel()
+void Mere::Widgets::NoteEditor::showEditPanel()
 {
     if (!m_panel) return;
     updatePanelGeometry();
     m_panel->show();
 }
 
-void MereNoteEditor::hideEditPanel()
+void Mere::Widgets::NoteEditor::hideEditPanel()
 {
     if (!m_panel) return;
 
     m_panel->hide();
 }
 
-void MereNoteEditor::updatePanelGeometry()
+void Mere::Widgets::NoteEditor::updatePanelGeometry()
 {
     QRect rect = this->geometry();
 
@@ -87,7 +105,7 @@ void MereNoteEditor::updatePanelGeometry()
     m_panel->setGeometry(rect);
 }
 
-void MereNoteEditor::applyBold()
+void Mere::Widgets::NoteEditor::applyBold()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -96,7 +114,7 @@ void MereNoteEditor::applyBold()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyItalic()
+void Mere::Widgets::NoteEditor::applyItalic()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -105,7 +123,7 @@ void MereNoteEditor::applyItalic()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyUnderline()
+void Mere::Widgets::NoteEditor::applyUnderline()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -114,7 +132,7 @@ void MereNoteEditor::applyUnderline()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyOverline()
+void Mere::Widgets::NoteEditor::applyOverline()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -123,7 +141,7 @@ void MereNoteEditor::applyOverline()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyStrikethrough()
+void Mere::Widgets::NoteEditor::applyStrikethrough()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -132,7 +150,7 @@ void MereNoteEditor::applyStrikethrough()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applySuperscript()
+void Mere::Widgets::NoteEditor::applySuperscript()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -141,7 +159,7 @@ void MereNoteEditor::applySuperscript()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applySubscript()
+void Mere::Widgets::NoteEditor::applySubscript()
 {
     QTextCursor cursor = m_note->textCursor();
 
@@ -150,7 +168,7 @@ void MereNoteEditor::applySubscript()
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyFont(const QFont &f)
+void Mere::Widgets::NoteEditor::applyFont(const QFont &f)
 {
     QTextCursor cursor = m_note->textCursor();
     QTextCharFormat format;
@@ -158,7 +176,7 @@ void MereNoteEditor::applyFont(const QFont &f)
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyFontSize(int size)
+void Mere::Widgets::NoteEditor::applyFontSize(int size)
 {
     QTextCursor cursor = m_note->textCursor();
     QTextCharFormat format;
@@ -166,7 +184,7 @@ void MereNoteEditor::applyFontSize(int size)
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyColor(const QColor &color)
+void Mere::Widgets::NoteEditor::applyColor(const QColor &color)
 {
     QTextCursor cursor = m_note->textCursor();
     QTextCharFormat format;
@@ -174,7 +192,7 @@ void MereNoteEditor::applyColor(const QColor &color)
     cursor.mergeCharFormat(format);
 }
 
-void MereNoteEditor::applyBackgroundColor(const QColor &color)
+void Mere::Widgets::NoteEditor::applyBackgroundColor(const QColor &color)
 {
     QTextCursor cursor = m_note->textCursor();
     QTextCharFormat format;
@@ -182,44 +200,44 @@ void MereNoteEditor::applyBackgroundColor(const QColor &color)
     cursor.mergeCharFormat(format);
 }
 
-bool MereNoteEditor::isBold(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isBold(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontWeight, QVariant(QFont::Bold));
 }
 
-bool MereNoteEditor::isItalic(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isItalic(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontItalic, QVariant(true));
 }
 
-bool MereNoteEditor::isUnderline(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isUnderline(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontUnderline, QVariant(true));
 }
 
-bool MereNoteEditor::isOverline(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isOverline(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontOverline, QVariant(true));
 }
 
-bool MereNoteEditor::isStrikethrough(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isStrikethrough(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontStrikeOut, QVariant(true));
 }
 
-bool MereNoteEditor::isSuperscript(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isSuperscript(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSuperScript));
 }
 
-bool MereNoteEditor::isSubscript(QTextCursor &cursor)
+bool Mere::Widgets::NoteEditor::isSubscript(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSubScript));
 }
 
-bool MereNoteEditor::isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value)
+bool Mere::Widgets::NoteEditor::isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value)
 {
-    bool set = true;
+    bool enable = true;
 
     int anchor   = cursor.anchor();
     int position = cursor.position();
@@ -235,7 +253,7 @@ bool MereNoteEditor::isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Pro
 
         if(!format.hasProperty(property) || format.property(property) != value)
         {
-            set = false;
+            enable = false;
             break;
         }
     }
@@ -243,13 +261,23 @@ bool MereNoteEditor::isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Pro
     cursor.setPosition(anchor, QTextCursor::MoveAnchor);
     cursor.setPosition(position, QTextCursor::KeepAnchor);
 
-    return set;
+    return enable;
 }
 
-void MereNoteEditor::resizeEvent(QResizeEvent *event)
+void Mere::Widgets::NoteEditor::resizeEvent(QResizeEvent *event)
 {
     if (!m_panel || m_panel->isHidden())
         return;
 
     updatePanelGeometry();
+}
+
+QString Mere::Widgets::NoteEditor::content() const
+{
+    return m_note->toHtml();
+}
+
+void Mere::Widgets::NoteEditor::setContent(const QString &content)
+{
+    m_note->setHtml(content);
 }

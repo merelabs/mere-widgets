@@ -21,7 +21,7 @@ public:
     explicit MereWinHeader(QWidget *parent = nullptr);
 
     void initUI();
-    void setTitle(const QString title);
+//    void setTitle(const QString &title);
 
 protected:
 //    virtual void setHeaderStyle(MereHeaderStyle style) = 0;
@@ -37,13 +37,14 @@ protected:
 private:
 
 signals:
+    void closed();
 
 public slots:
 private slots:
     void close();
 
 protected:
-    QLabel *m_title;
+//    QLabel *m_title;
 
 private:
     bool m_lock;

@@ -1,27 +1,24 @@
-#include "mereeditablelabel.h"
+#include "editablelabel.h"
 
 #include <QEvent>
 #include <QMouseEvent>
 #include <QTextDocument>
 
-MereEditableLabel::MereEditableLabel(QWidget *parent)
-    : QLabel(parent),
-      m_flag(true)
+Mere::Widgets::EditableLabel::EditableLabel(QWidget *parent)
+    : QLabel(parent)
 {
     installEventFilter(this);
 }
 
-void MereEditableLabel::setEditable(bool flag)
+void Mere::Widgets::EditableLabel::setEditable(bool flag)
 {
-    m_flag = flag;
-
     if (flag)
         makeEditable();
     else
         makeViewable();
 }
 
-void MereEditableLabel::makeEditable()
+void Mere::Widgets::EditableLabel::makeEditable()
 {
     setTextInteractionFlags(Qt::TextEditable |
                             Qt::TextSelectableByKeyboard |
@@ -32,7 +29,7 @@ void MereEditableLabel::makeEditable()
     setFocus();
 }
 
-void MereEditableLabel::makeViewable()
+void Mere::Widgets::EditableLabel::makeViewable()
 {
     updateDirtyText();
     setSelection(0, 0);
@@ -40,21 +37,21 @@ void MereEditableLabel::makeViewable()
     setTextInteractionFlags(Qt::LinksAccessibleByMouse);
 }
 
-void MereEditableLabel::updateDirtyText()
+void Mere::Widgets::EditableLabel::updateDirtyText()
 {
     QList<QTextDocument *> list = findChildren<QTextDocument *>();
     foreach(QTextDocument *document, list)
     {
         this->setText(document->toPlainText());
+        emit changed();
         break;
     }
 }
 
-bool MereEditableLabel::eventFilter(QObject *object, QEvent *event)
+bool Mere::Widgets::EditableLabel::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonDblClick)
     {
-        //QMouseEvent *mouse = static_cast<QMouseEvent *>(event);
         setEditable(true);
         return true;
     }

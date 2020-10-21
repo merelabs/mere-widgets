@@ -1,4 +1,4 @@
-#include "meresimpleeditpanel.h"
+#include "editorpanel.h"
 
 #include <QSpinBox>
 #include <QColorDialog>
@@ -6,19 +6,19 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 
-MereSimpleEditPanel::MereSimpleEditPanel(QWidget *parent)
+Mere::Widgets::EditorPanel::EditorPanel(QWidget *parent)
     : QWidget(parent)
 {
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setAlignment(Qt::AlignLeft);
     layout->setContentsMargins(5, 5, 5, 5);
-    layout->setSpacing(0);
+    layout->setSpacing(3);
     setLayout(layout);
 
     initUI();
 }
 
-void MereSimpleEditPanel::initUI()
+void Mere::Widgets::EditorPanel::initUI()
 {
     QSize size(16, 16);
 
@@ -76,15 +76,15 @@ void MereSimpleEditPanel::initUI()
     background->setFlat(true);
     layout()->addWidget(background);
 
-    connect(bold     , SIGNAL(clicked()), this, SIGNAL(applyBold()));
-    connect(italic   , SIGNAL(clicked()), this, SIGNAL(applyItalic()));
-    connect(underline, SIGNAL(clicked()), this, SIGNAL(applyUnderline()));
-    connect(overline , SIGNAL(clicked()), this, SIGNAL(applyOverline()));
-    connect(strikethrough , SIGNAL(clicked()), this, SIGNAL(applyStrikethrough()));
-    connect(superscript , SIGNAL(clicked()), this, SIGNAL(applySuperscript()));
-    connect(subscript , SIGNAL(clicked()), this, SIGNAL(applySubscript()));
+    connect(bold         , SIGNAL(clicked()), this, SIGNAL(applyBold()));
+    connect(italic       , SIGNAL(clicked()), this, SIGNAL(applyItalic()));
+    connect(underline    , SIGNAL(clicked()), this, SIGNAL(applyUnderline()));
+    connect(overline     , SIGNAL(clicked()), this, SIGNAL(applyOverline()));
+    connect(strikethrough, SIGNAL(clicked()), this, SIGNAL(applyStrikethrough()));
+    connect(superscript  , SIGNAL(clicked()), this, SIGNAL(applySuperscript()));
+    connect(subscript    , SIGNAL(clicked()), this, SIGNAL(applySubscript()));
 
-    connect(font     , SIGNAL(currentFontChanged(const QFont &)), this, SIGNAL(applyFont(const QFont &)));
+    connect(font         , SIGNAL(currentFontChanged(const QFont &)), this, SIGNAL(applyFont(const QFont &)));
     connect(fintSize     , SIGNAL(valueChanged(int)), this, SIGNAL(applyFontSize(int)));
 
     connect(color , &QPushButton::clicked, this, [this]{

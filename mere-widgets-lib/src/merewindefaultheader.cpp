@@ -4,8 +4,18 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
+MereWinDefaultHeader::~MereWinDefaultHeader()
+{
+    if (m_title)
+    {
+        delete m_title;
+        m_title = nullptr;
+    }
+}
+
 MereWinDefaultHeader::MereWinDefaultHeader(QWidget *parent)
-    : MereWinHeader(parent)
+    : MereWinHeader(parent),
+      m_title(nullptr)
 {
     setMaximumHeight(48);
 }
@@ -58,3 +68,7 @@ void MereWinDefaultHeader::initRightPanel()
     connect(close, SIGNAL(clicked(bool)), this, SLOT(close()));
 }
 
+void MereWinDefaultHeader::setTitle(const QString &title)
+{
+    m_title->setText(title);
+}

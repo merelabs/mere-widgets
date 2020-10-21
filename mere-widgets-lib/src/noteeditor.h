@@ -1,17 +1,26 @@
 #ifndef MERENOTEEDITOR_H
 #define MERENOTEEDITOR_H
 
-#include "meresimpleeditor.h"
-#include "merefloateditpanel.h"
+#include "texteditor.h"
+#include "editorpanel.h"
 
 #include <QWidget>
-#include <QDebug>
 
-class MereNoteEditor : public QWidget
+namespace Mere
+{
+
+namespace  Widgets
+{
+
+class NoteEditor : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MereNoteEditor(QWidget *parent = nullptr);
+    virtual ~NoteEditor();
+    explicit NoteEditor(QWidget *parent = nullptr);
+
+    QString content() const;
+    void setContent(const QString &content);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -34,9 +43,6 @@ private:
 
     bool isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value);
 
-signals:
-
-public slots:
 private slots:
     void contentSelected();
     void applyBold();
@@ -52,8 +58,10 @@ private slots:
     void applyBackgroundColor(const QColor &color);
 
 private:
-    MereSimpleEditor *m_note;
-    MereFloatEditPanel *m_panel;
+    TextEditor *m_note;
+    EditorPanel *m_panel;
 };
 
+}
+}
 #endif // MERENOTEEDITOR_H

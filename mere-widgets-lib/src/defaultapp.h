@@ -1,16 +1,19 @@
 #ifndef MEREDEFAULTAPP_H
 #define MEREDEFAULTAPP_H
 
-#include "mereapp.h"
+#include "app.h"
 
 #include <QObject>
 #include <QDebug>
 
-class MereDefaultApp : public MereApp
+namespace Mere
+{
+
+class DefaultApp : public App
 {
     Q_OBJECT
 public:
-    explicit MereDefaultApp(int &argc, char **argv);
+    explicit DefaultApp(int &argc, char **argv);
 
     virtual void init();
 
@@ -23,4 +26,5 @@ signals:
 public slots:
 };
 
+}
 #endif // MEREDEFAULTAPP_H

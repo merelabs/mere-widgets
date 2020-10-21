@@ -1,23 +1,23 @@
-#include "meredefaultapp.h"
+#include "defaultapp.h"
 
-#include "mere/utils/merestringutils.h"
+#include "mere/utils/stringutils.h"
 
 #include <QFile>
 
-MereDefaultApp::MereDefaultApp(int &argc, char **argv)
-    : MereApp(argc, argv)
+Mere::DefaultApp::DefaultApp(int &argc, char **argv)
+    : App(argc, argv)
 {
 }
 
-void MereDefaultApp::init()
+void Mere::DefaultApp::init()
 {
     initStyle();
 }
 
-void MereDefaultApp::initStyle()
+void Mere::DefaultApp::initStyle()
 {
     QString code = this->appCode();
-    if (MereStringUtils::isBlank(code))
+    if (Mere::Utils::StringUtils::isBlank(code))
     {
         qDebug() << "Style initialization faile as no app-code found.";
         return;
@@ -30,7 +30,7 @@ void MereDefaultApp::initStyle()
     applyStyle(style);
 }
 
-void MereDefaultApp::applyStyle(QString style)
+void Mere::DefaultApp::applyStyle(QString style)
 {
     QFile file(style);
     if (!file.exists())
@@ -42,7 +42,7 @@ void MereDefaultApp::applyStyle(QString style)
     file.open(QFile::ReadOnly);
 
     QString styleSheet = QLatin1String(file.readAll());
-    if (MereStringUtils::isBlank(styleSheet))
+    if (Mere::Utils::StringUtils::isBlank(styleSheet))
     {
         qDebug() << QString("Failed to apply style - %1 contain nothing.").arg(style);
         return;

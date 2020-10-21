@@ -1,14 +1,20 @@
-#ifndef MEREEDITABLELABEL_H
-#define MEREEDITABLELABEL_H
+#ifndef MERE_WIDGETS_EDITABLELABEL_H
+#define MERE_WIDGETS_EDITABLELABEL_H
 
 #include <QLabel>
 #include <QDebug>
 
-class MereEditableLabel : public QLabel
+namespace Mere
+{
+
+namespace  Widgets
+{
+
+class EditableLabel : public QLabel
 {
     Q_OBJECT
 public:
-    explicit MereEditableLabel(QWidget *parent = nullptr);
+    explicit EditableLabel(QWidget *parent = nullptr);
     void setEditable(bool flag = true);
 
 protected:
@@ -20,10 +26,9 @@ private:
     void updateDirtyText();
 
 signals:
-
-public slots:
-private:
-    bool m_flag;
+    void changed();
 };
 
-#endif // MEREEDITABLELABEL_H
+}
+}
+#endif // MERE_WIDGETS_EDITABLELABEL_H

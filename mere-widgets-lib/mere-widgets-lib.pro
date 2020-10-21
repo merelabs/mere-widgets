@@ -1,6 +1,6 @@
 include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
-include(../../mere-log/mere-log-lib/mere-log-lib.pri)
-include(../../mere-config/mere-config-lib/mere-config-lib.pri)
+#include(../../mere-log/mere-log-lib/mere-log-lib.pri)
+#include(../../mere-config/mere-config-lib/mere-config-lib.pri)
 
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -17,18 +17,13 @@ DEFINES += LIB_NAME=\\\"$$TARGET\\\"
 DEFINES += LIB_VERSION=\\\"$$VERSION\\\"
 DEFINES += QT_DEPRECATED_WARNINGS MERE_WIDGETS_LIB
 
-#CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
-
 SOURCES += \
-    src/mereapp.cpp \
-    src/meredefaultapp.cpp \
+    src/app.cpp \
+    src/defaultapp.cpp \
+    src/editablelabel.cpp \
+    src/editorpanel.cpp \
     src/meredefaultwin.cpp \
-    src/mereeditablelabel.cpp \
-    src/merefloateditpanel.cpp \
-    src/merenoteeditor.cpp \
     src/mereresizeablewin.cpp \
-    src/meresimpleeditor.cpp \
-    src/meresimpleeditpanel.cpp \
     src/meresimplewinheader.cpp \
     src/merestatusbar.cpp \
     src/merewidgetresizer.cpp \
@@ -39,20 +34,19 @@ SOURCES += \
     src/mereshadowwidget.cpp \
     src/merewin.cpp \
     src/merewindefaultheader.cpp \
-    src/merewinheader.cpp
+    src/merewinheader.cpp \
+    src/noteeditor.cpp \
+    src/texteditor.cpp
 
 HEADERS += \
-    src/mereapp.h \
-    src/meredefaultapp.h \
+    src/app.h \
+    src/defaultapp.h \
+    src/editablelabel.h \
+    src/editorpanel.h \
     src/meredefaultwin.h \
-    src/mereeditablelabel.h \
-    src/merefloateditpanel.h \
     src/meremoveable.h \
-    src/merenoteeditor.h \
     src/mereresizeable.h \
     src/mereresizeablewin.h \
-    src/meresimpleeditor.h \
-    src/meresimpleeditpanel.h \
     src/meresimplewinheader.h \
     src/merestatusbar.h \
     src/merewidgetresizer.h \
@@ -64,28 +58,15 @@ HEADERS += \
     src/mereshadowwidget.h \
     src/merewin.h \
     src/merewindefaultheader.h \
-    src/merewinheader.h
+    src/merewinheader.h \
+    src/noteeditor.h \
+    src/texteditor.h
 
-DESTDIR = $$PWD/../lib
+RESOURCES += \
+        res/widgets.qrc
+
+INCLUDEPATH += /usr/local/include
 LIBS += -lX11
-
-defineTest(copy) {
-    source = $$1
-    target = $$2
-
-    for(file, source) {
-        sdir = $${dirname(file)}
-        sdir = $$replace(sdir, "src", "")
-        path = $${target}$${sdir}
-
-        QMAKE_POST_LINK += $$QMAKE_MKDIR $$quote($$path) $$escape_expand(\\n\\t)
-        QMAKE_POST_LINK += $$QMAKE_COPY $$quote($$file) $$quote($$path) $$escape_expand(\\n\\t)
-    }
-
-    export(QMAKE_POST_LINK)
-}
-
-copy($$HEADERS, $$PWD/../include/mere/widgets)
 
 #
 # Install
@@ -105,6 +86,3 @@ unix {
         eval(INSTALLS *= headers_$${path})
     }
 }
-
-RESOURCES += \
-    res/widgets.qrc

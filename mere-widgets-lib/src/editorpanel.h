@@ -1,15 +1,21 @@
-#ifndef MERESIMPLEEDITPANEL_H
-#define MERESIMPLEEDITPANEL_H
+#ifndef MERE_WIDGETS_EDITORPANEL_H
+#define MERE_WIDGETS_EDITORPANEL_H
 
 #include <QFont>
 #include <QColor>
 #include <QWidget>
 
-class MereSimpleEditPanel : public QWidget
+namespace Mere
+{
+
+namespace Widgets
+{
+
+class EditorPanel : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MereSimpleEditPanel(QWidget *parent = nullptr);
+    explicit EditorPanel(QWidget *parent = nullptr);
     void initUI();
 
 signals:
@@ -28,4 +34,7 @@ signals:
 public slots:
 };
 
-#endif // MERESIMPLEEDITPANEL_H
+}
+}
+
+#endif // MERE_WIDGETS_EDITORPANEL_H
