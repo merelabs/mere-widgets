@@ -16,6 +16,10 @@ class EditableLabel : public QLabel
 public:
     explicit EditableLabel(QWidget *parent = nullptr);
     void setEditable(bool flag = true);
+    void setPlaceholder(const QString &placeholder);
+
+    QString text() const;
+    void setText(const QString &text);
 
 protected:
     bool eventFilter(QObject* object, QEvent* event) override;
@@ -25,8 +29,15 @@ private:
     void makeViewable();
     void updateDirtyText();
 
+    void resetPlaceholder();
+    void clearPlaceholder();
+
 signals:
     void changed();
+
+private:
+    bool m_placeholderMark;
+    QString m_placeholderText;
 };
 
 }

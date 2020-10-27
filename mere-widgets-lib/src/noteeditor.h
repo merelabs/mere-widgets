@@ -2,8 +2,9 @@
 #define MERENOTEEDITOR_H
 
 #include "texteditor.h"
-#include "editorpanel.h"
+#include "noteeditorpanel.h"
 
+#include <QKeyEvent>
 #include <QWidget>
 
 namespace Mere
@@ -22,7 +23,20 @@ public:
     QString content() const;
     void setContent(const QString &content);
 
+    bool isBold();
+    bool isItalic();
+    bool isUnderline();
+    bool isOverline();
+    bool isStrikethrough();
+    bool isSuperscript();
+    bool isSubscript();
+    QColor foregroundColor();
+    QColor backgroundColor();
+
+    int fontPointSize();
+
 protected:
+    void keyPressEvent(QKeyEvent *e) override;
     void resizeEvent(QResizeEvent *event) override;
 
 private:
@@ -43,6 +57,8 @@ private:
 
     bool isPropertyEnabled(QTextCursor &cursor, QTextCharFormat::Property property, QVariant value);
 
+    bool changeFontSize(int by);
+
 private slots:
     void contentSelected();
     void applyBold();
@@ -59,7 +75,7 @@ private slots:
 
 private:
     TextEditor *m_note;
-    EditorPanel *m_panel;
+    NoteEditorPanel *m_panel;
 };
 
 }

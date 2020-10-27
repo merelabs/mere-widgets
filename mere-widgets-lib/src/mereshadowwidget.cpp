@@ -8,7 +8,7 @@
 
 MereShadowWidget::MereShadowWidget(QWidget *parent)
     : QWidget(parent),
-      m_resizer(new MereWidgetResizer(this))
+      m_resizer(new Mere::Widgets::Resizer(this))
 {
     setWindowFlags(Qt::FramelessWindowHint);
     setWindowModality(Qt::ApplicationModal);
@@ -69,10 +69,10 @@ void MereShadowWidget::moveToCenterScreen()
 
 //}
 
-void MereShadowWidget::adjustSize(const QSize &size)
-{
-    resize(width() + size.width(), height() + size.height());
-}
+//void MereShadowWidget::adjustSize(const QSize &size)
+//{
+//    resize(width() + size.width(), height() + size.height());
+//}
 
 void MereShadowWidget::resizeEvent(QResizeEvent *event)
 {

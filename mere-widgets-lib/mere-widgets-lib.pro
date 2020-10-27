@@ -20,36 +20,40 @@ DEFINES += QT_DEPRECATED_WARNINGS MERE_WIDGETS_LIB
 SOURCES += \
     src/app.cpp \
     src/defaultapp.cpp \
+    src/defaultwin.cpp \
+    src/defaultwinheader.cpp \
     src/editablelabel.cpp \
-    src/editorpanel.cpp \
-    src/meredefaultwin.cpp \
-    src/mereresizeablewin.cpp \
-    src/meresimplewinheader.cpp \
-    src/merestatusbar.cpp \
-    src/merewidgetresizer.cpp \
+    src/headerview.cpp \
     src/merepushmenu.cpp \
     src/mereballonwidget.cpp \
     src/merelabel.cpp \
     src/mereclickdetector.cpp \
     src/mereshadowwidget.cpp \
     src/merewin.cpp \
-    src/merewindefaultheader.cpp \
-    src/merewinheader.cpp \
     src/noteeditor.cpp \
-    src/texteditor.cpp
+    src/noteeditorpanel.cpp \
+    src/panelview.cpp \
+    src/resizeablewin.cpp \
+    src/resizer.cpp \
+    src/scratchboard.cpp \
+    src/scratcheditor.cpp \
+    src/scratcheditorpanel.cpp \
+    src/scratcheditorscroller.cpp \
+    src/simplewinheader.cpp \
+    src/simplewinheaderex.cpp \
+    src/statusbar.cpp \
+    src/texteditor.cpp \
+    src/winheader.cpp
 
 HEADERS += \
     src/app.h \
     src/defaultapp.h \
+    src/defaultwin.h \
+    src/defaultwinheader.h \
     src/editablelabel.h \
-    src/editorpanel.h \
-    src/meredefaultwin.h \
+    src/global.h \
+    src/headerview.h \
     src/meremoveable.h \
-    src/mereresizeable.h \
-    src/mereresizeablewin.h \
-    src/meresimplewinheader.h \
-    src/merestatusbar.h \
-    src/merewidgetresizer.h \
     src/merepushmenu.h \
     src/mereballonwidget.h \
     src/merelabel.h \
@@ -57,10 +61,20 @@ HEADERS += \
     src/mereclickdetector.h \
     src/mereshadowwidget.h \
     src/merewin.h \
-    src/merewindefaultheader.h \
-    src/merewinheader.h \
     src/noteeditor.h \
-    src/texteditor.h
+    src/noteeditorpanel.h \
+    src/panelview.h \
+    src/resizeablewin.h \
+    src/resizer.h \
+    src/scratchboard.h \
+    src/scratcheditor.h \
+    src/scratcheditorpanel.h \
+    src/scratcheditorscroller.h \
+    src/simplewinheader.h \
+    src/simplewinheaderex.h \
+    src/statusbar.h \
+    src/texteditor.h \
+    src/winheader.h
 
 RESOURCES += \
         res/widgets.qrc

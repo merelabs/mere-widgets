@@ -25,7 +25,8 @@ Mere::Widgets::NoteEditor::NoteEditor(QWidget *parent)
       m_panel(nullptr)
 {
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, QColor(0, 46, 99, 25));
+    pal.setColor(QPalette::Base, Qt::transparent);
+    pal.setColor(QPalette::Background, Qt::transparent);
     setAutoFillBackground(true);
     setPalette(pal);
 
@@ -40,6 +41,8 @@ Mere::Widgets::NoteEditor::NoteEditor(QWidget *parent)
 void Mere::Widgets::NoteEditor::initUI()
 {
     m_note = new TextEditor;
+    m_note->setAutoFillBackground(true);
+    m_note->setPalette(this->palette());
 
     layout()->addWidget(m_note);
 
@@ -64,7 +67,7 @@ void Mere::Widgets::NoteEditor::contentSelected()
 
     if (!m_panel)
     {
-        m_panel = new EditorPanel(this);
+        m_panel = new NoteEditorPanel(*this);
         connect(m_panel, SIGNAL(applyBold()), this, SLOT(applyBold()));
         connect(m_panel, SIGNAL(applyItalic()), this, SLOT(applyItalic()));
         connect(m_panel, SIGNAL(applyUnderline()), this, SLOT(applyUnderline()));
@@ -78,7 +81,10 @@ void Mere::Widgets::NoteEditor::contentSelected()
         connect(m_panel, SIGNAL(applyFontSize(int)), this, SLOT(applyFontSize(int)));
         connect(m_panel, SIGNAL(applyColor(const QColor &)), this, SLOT(applyColor(const QColor &)));
         connect(m_panel, SIGNAL(applyBackgroundColor(const QColor &)), this, SLOT(applyBackgroundColor(const QColor &)));
+
+        connect(m_note, SIGNAL(selectionChanged()), m_panel, SLOT(selectionChanged()));
     }
+
     showEditPanel();
 }
 
@@ -176,12 +182,32 @@ void Mere::Widgets::NoteEditor::applyFont(const QFont &f)
     cursor.mergeCharFormat(format);
 }
 
+int Mere::Widgets::NoteEditor::fontPointSize()
+{
+    QTextCursor cursor = m_note->textCursor();
+    QTextCharFormat format = cursor.charFormat();
+
+    // FIXME
+
+    return format.fontPointSize();
+}
+
 void Mere::Widgets::NoteEditor::applyFontSize(int size)
 {
     QTextCursor cursor = m_note->textCursor();
     QTextCharFormat format;
     format.setFontPointSize(size);
     cursor.mergeCharFormat(format);
+}
+
+QColor Mere::Widgets::NoteEditor::foregroundColor()
+{
+    QTextCursor cursor = m_note->textCursor();
+    QTextCharFormat format = cursor.charFormat();
+
+    // FIXME
+
+    return format.foreground().color();
 }
 
 void Mere::Widgets::NoteEditor::applyColor(const QColor &color)
@@ -192,6 +218,16 @@ void Mere::Widgets::NoteEditor::applyColor(const QColor &color)
     cursor.mergeCharFormat(format);
 }
 
+QColor Mere::Widgets::NoteEditor::backgroundColor()
+{
+    QTextCursor cursor = m_note->textCursor();
+    QTextCharFormat format = cursor.charFormat();
+
+    // FIXME
+
+    return format.background().color();
+}
+
 void Mere::Widgets::NoteEditor::applyBackgroundColor(const QColor &color)
 {
     QTextCursor cursor = m_note->textCursor();
@@ -200,9 +236,21 @@ void Mere::Widgets::NoteEditor::applyBackgroundColor(const QColor &color)
     cursor.mergeCharFormat(format);
 }
 
+bool Mere::Widgets::NoteEditor::isBold()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isBold(cursor);
+}
+
 bool Mere::Widgets::NoteEditor::isBold(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontWeight, QVariant(QFont::Bold));
+}
+
+bool Mere::Widgets::NoteEditor::isItalic()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isItalic(cursor);
 }
 
 bool Mere::Widgets::NoteEditor::isItalic(QTextCursor &cursor)
@@ -210,9 +258,21 @@ bool Mere::Widgets::NoteEditor::isItalic(QTextCursor &cursor)
     return isPropertyEnabled(cursor, QTextFormat::FontItalic, QVariant(true));
 }
 
+bool Mere::Widgets::NoteEditor::isUnderline()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isUnderline(cursor);
+}
+
 bool Mere::Widgets::NoteEditor::isUnderline(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontUnderline, QVariant(true));
+}
+
+bool Mere::Widgets::NoteEditor::isOverline()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isOverline(cursor);
 }
 
 bool Mere::Widgets::NoteEditor::isOverline(QTextCursor &cursor)
@@ -220,14 +280,32 @@ bool Mere::Widgets::NoteEditor::isOverline(QTextCursor &cursor)
     return isPropertyEnabled(cursor, QTextFormat::FontOverline, QVariant(true));
 }
 
+bool Mere::Widgets::NoteEditor::isStrikethrough()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isStrikethrough(cursor);
+}
+
 bool Mere::Widgets::NoteEditor::isStrikethrough(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::FontStrikeOut, QVariant(true));
 }
 
+bool Mere::Widgets::NoteEditor::isSuperscript()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isSuperscript(cursor);
+}
+
 bool Mere::Widgets::NoteEditor::isSuperscript(QTextCursor &cursor)
 {
     return isPropertyEnabled(cursor, QTextFormat::TextVerticalAlignment, QVariant(QTextCharFormat::AlignSuperScript));
+}
+
+bool Mere::Widgets::NoteEditor::isSubscript()
+{
+    QTextCursor cursor = m_note->textCursor();
+    return isSubscript(cursor);
 }
 
 bool Mere::Widgets::NoteEditor::isSubscript(QTextCursor &cursor)
@@ -264,6 +342,33 @@ bool Mere::Widgets::NoteEditor::isPropertyEnabled(QTextCursor &cursor, QTextChar
     return enable;
 }
 
+bool Mere::Widgets::NoteEditor::changeFontSize(int by)
+{
+    QTextCursor cursor = m_note->textCursor();
+
+    bool enable = true;
+
+    int anchor   = cursor.anchor();
+    int position = cursor.position();
+
+    int offset = anchor < position ? anchor : position;
+    int length = cursor.selectedText().length();
+
+    for(int i = 1; i <= length; i++)
+    {
+        cursor.setPosition(offset + i);
+        QTextCharFormat format = cursor.charFormat();
+        qDebug() << "1..." << format.fontPointSize();
+        format.setFontPointSize(format.fontPointSize() + by);
+        cursor.mergeCharFormat(format);
+    }
+
+    cursor.setPosition(anchor, QTextCursor::MoveAnchor);
+    cursor.setPosition(position, QTextCursor::KeepAnchor);
+
+    return enable;
+}
+
 void Mere::Widgets::NoteEditor::resizeEvent(QResizeEvent *event)
 {
     if (!m_panel || m_panel->isHidden())
@@ -280,4 +385,64 @@ QString Mere::Widgets::NoteEditor::content() const
 void Mere::Widgets::NoteEditor::setContent(const QString &content)
 {
     m_note->setHtml(content);
+}
+
+void Mere::Widgets::NoteEditor::keyPressEvent(QKeyEvent *e)
+{
+    if (e->key() == Qt::Key_B  && (e->modifiers() & Qt::ControlModifier))
+    {
+        applyBold();
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_I  && (e->modifiers() & Qt::ControlModifier))
+    {
+        applyItalic();
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_U  && (e->modifiers() & Qt::ControlModifier))
+    {
+        applyUnderline();
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_O  && (e->modifiers() & Qt::ControlModifier))
+    {
+        applyOverline();
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_Up  && (e->modifiers() & Qt::ControlModifier))
+    {
+        if (isSubscript())
+            applySubscript();
+        else
+            applySuperscript();
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_Down  && (e->modifiers() & Qt::ControlModifier))
+    {
+        if (isSuperscript())
+            applySuperscript();
+        else
+            applySubscript();
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_Minus && (e->modifiers() & Qt::ControlModifier))
+    {
+        changeFontSize(-1);
+        e->accept(); // set as 'handled here'
+        return;
+    }
+    else if (e->key() == Qt::Key_Plus  && (e->modifiers() & Qt::ControlModifier))
+    {
+        changeFontSize(1);
+        e->accept(); // set as 'handled here'
+        return;
+    }
+
+    e->ignore(); // set as 'not handled here'
 }
