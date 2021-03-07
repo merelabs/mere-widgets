@@ -1,7 +1,7 @@
 #include "app.h"
 
 #ifndef MERE_NO_LOGGER
-#include "mere/log/merelogger.h"
+#include "mere/log/logger.h"
 #endif
 
 
