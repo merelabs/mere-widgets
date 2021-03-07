@@ -15,11 +15,11 @@ class DefaultApp : public App
 public:
     explicit DefaultApp(int &argc, char **argv);
 
-    virtual void init();
+    virtual int init();
 
 private:
-    virtual void initStyle() override;
-    virtual void applyStyle(QString style);
+    virtual int initStyle() override;
+    virtual int applyStyle(QString style);
 
 signals:
 

@@ -9,18 +9,20 @@ Mere::DefaultApp::DefaultApp(int &argc, char **argv)
 {
 }
 
-void Mere::DefaultApp::init()
+int Mere::DefaultApp::init()
 {
     initStyle();
+
+    return 0;
 }
 
-void Mere::DefaultApp::initStyle()
+int Mere::DefaultApp::initStyle()
 {
     QString code = this->appCode();
     if (Mere::Utils::StringUtils::isBlank(code))
     {
         qDebug() << "Style initialization faile as no app-code found.";
-        return;
+        return 1;
     }
 
     QString style(":/%1/%2.qss");
@@ -28,15 +30,17 @@ void Mere::DefaultApp::initStyle()
                  .arg(code);
 
     applyStyle(style);
+
+    return 0;
 }
 
-void Mere::DefaultApp::applyStyle(QString style)
+int Mere::DefaultApp::applyStyle(QString style)
 {
     QFile file(style);
     if (!file.exists())
     {
         qDebug() << QString("Failed to apply style - %1 not found.").arg(style);
-        return;
+        return 1;
     }
 
     file.open(QFile::ReadOnly);
@@ -45,9 +49,11 @@ void Mere::DefaultApp::applyStyle(QString style)
     if (Mere::Utils::StringUtils::isBlank(styleSheet))
     {
         qDebug() << QString("Failed to apply style - %1 contain nothing.").arg(style);
-        return;
+        return 2;
     }
 
     qDebug() << "Applying following stylesheet: " << style;
     setStyleSheet(styleSheet);
+
+    return 0;
 }

@@ -50,7 +50,7 @@ public:
 #endif
 
 private:
-    virtual void initStyle() = 0;
+    virtual int initStyle() = 0;
 
 signals:
     void codeChanged(const QString &code);
