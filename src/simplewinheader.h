@@ -13,7 +13,7 @@ class SimpleWinHeader : public DefaultWinHeader
 {
     Q_OBJECT
 public:
-    ~SimpleWinHeader();
+    virtual ~SimpleWinHeader();
     explicit SimpleWinHeader(QWidget *parent = nullptr);
 
     void setTitle(const QString &title);

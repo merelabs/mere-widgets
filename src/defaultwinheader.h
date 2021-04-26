@@ -1,11 +1,13 @@
-#ifndef DEFAULTWINHEADER_H
-#define DEFAULTWINHEADER_H
+#ifndef MERE_WIDGETS_DEFAULTWINHEADER_H
+#define MERE_WIDGETS_DEFAULTWINHEADER_H
 
 #include "winheader.h"
 
-namespace Mere {
+namespace Mere
+{
 
-namespace Widgets {
+namespace Widgets
+{
 
 class DefaultWinHeader : public WinHeader
 {
@@ -19,14 +21,10 @@ protected:
 
 signals:
     void closed();
-
-private slots:
-    void close();
-
 };
 
 }
 }
 
 
-#endif // DEFAULTWINHEADER_H
+#endif // MERE_WIDGETS_DEFAULTWINHEADER_H

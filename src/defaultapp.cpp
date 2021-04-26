@@ -4,6 +4,11 @@
 
 #include <QFile>
 
+Mere::DefaultApp::~DefaultApp()
+{
+
+}
+
 Mere::DefaultApp::DefaultApp(int &argc, char **argv)
     : App(argc, argv)
 {

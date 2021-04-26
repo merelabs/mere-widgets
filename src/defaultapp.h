@@ -13,6 +13,7 @@ class DefaultApp : public App
 {
     Q_OBJECT
 public:
+    virtual ~DefaultApp();
     explicit DefaultApp(int &argc, char **argv);
 
     virtual int init();
