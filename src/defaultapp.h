@@ -12,7 +12,7 @@ namespace Mere
 namespace Widgets
 {
 
-class DefaultApp : public App
+class MERE_WIDGETS_LIBSPEC DefaultApp : public App
 {
     Q_OBJECT
 public:

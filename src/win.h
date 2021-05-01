@@ -1,6 +1,8 @@
 #ifndef MERE_WIDGETS_WIN_H
 #define MERE_WIDGETS_WIN_H
 
+#include "global.h"
+
 #include <QWidget>
 
 namespace Mere
@@ -8,7 +10,7 @@ namespace Mere
 namespace Widgets
 {
 
-class Win : public QWidget
+class MERE_WIDGETS_LIBSPEC Win : public QWidget
 {
     Q_OBJECT
 public:

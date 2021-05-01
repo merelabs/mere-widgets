@@ -1,6 +1,8 @@
 #ifndef MERE_WIDGETS_APP_H
 #define MERE_WIDGETS_APP_H
 
+#include "global.h"
+
 #include <QApplication>
 
 #ifndef MERE_NO_LOGGER
@@ -12,7 +14,7 @@ namespace Mere
 namespace Widgets
 {
 
-class App : public QApplication
+class MERE_WIDGETS_LIBSPEC App : public QApplication
 {
     Q_OBJECT
 public:

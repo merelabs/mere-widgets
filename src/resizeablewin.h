@@ -10,7 +10,7 @@ namespace Widgets
 {
 
 class Resizer;
-class ResizeableWin : public DefaultWin
+class MERE_WIDGETS_LIBSPEC ResizeableWin : public DefaultWin
 {
     Q_OBJECT
 public:

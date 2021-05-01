@@ -1,15 +1,16 @@
 #ifndef MERE_WIDGETS_RESIZER_H
 #define MERE_WIDGETS_RESIZER_H
 
+#include "global.h"
+
 #include <QWidget>
-#include <QDebug>
 
 namespace Mere
 {
 namespace Widgets
 {
 
-class Resizer : public QWidget
+class MERE_WIDGETS_LIBSPEC Resizer : public QWidget
 {
     Q_OBJECT
 public:

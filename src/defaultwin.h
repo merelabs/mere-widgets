@@ -14,7 +14,7 @@ namespace Widgets
 
 class SimpleWinHeader;
 
-class DefaultWin : public Win, public Moveable
+class MERE_WIDGETS_LIBSPEC DefaultWin : public Win, public Moveable
 {
     Q_OBJECT
 public:
