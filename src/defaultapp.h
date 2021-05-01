@@ -1,5 +1,5 @@
-#ifndef MEREDEFAULTAPP_H
-#define MEREDEFAULTAPP_H
+#ifndef MERE_WIDGETS_DEFAULTAPP_H
+#define MERE_WIDGETS_DEFAULTAPP_H
 
 #include "app.h"
 
@@ -7,6 +7,9 @@
 #include <QDebug>
 
 namespace Mere
+{
+
+namespace Widgets
 {
 
 class DefaultApp : public App
@@ -20,12 +23,9 @@ public:
 
 private:
     virtual int initStyle() override;
-    virtual int applyStyle(QString style);
-
-signals:
-
-public slots:
+    virtual int applyStyle(const std::string &path);
 };
 
 }
-#endif // MEREDEFAULTAPP_H
+}
+#endif // MERE_WIDGETS_DEFAULTAPP_H

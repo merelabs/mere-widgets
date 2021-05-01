@@ -1,64 +1,69 @@
 #include "defaultapp.h"
 
 #include "mere/utils/stringutils.h"
+#include "mere/utils/fileutils.h"
 
-#include <QFile>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
-Mere::DefaultApp::~DefaultApp()
+Mere::Widgets::DefaultApp::~DefaultApp()
 {
 
 }
 
-Mere::DefaultApp::DefaultApp(int &argc, char **argv)
+Mere::Widgets::DefaultApp::DefaultApp(int &argc, char **argv)
     : App(argc, argv)
 {
 }
 
-int Mere::DefaultApp::init()
+int Mere::Widgets::DefaultApp::init()
 {
     initStyle();
 
     return 0;
 }
 
-int Mere::DefaultApp::initStyle()
+int Mere::Widgets::DefaultApp::initStyle()
 {
-    QString code = this->appCode();
+    std::string code = this->appCode();
     if (Mere::Utils::StringUtils::isBlank(code))
     {
-        qDebug() << "Style initialization faile as no app-code found.";
+        std::cout << "Style initialization faile as no app-code found." << std::endl;
         return 1;
     }
 
-    QString style(":/%1/%2.qss");
-    style = style.arg(code)
-                 .arg(code);
-
+    std::string style(":/");
+    style.append(code).append("/");
+    style.append(code).append(".qss");
     applyStyle(style);
 
     return 0;
 }
 
-int Mere::DefaultApp::applyStyle(QString style)
+int Mere::Widgets::DefaultApp::applyStyle(const std::string &path)
 {
-    QFile file(style);
-    if (!file.exists())
+    if(!Mere::Utils::FileUtils::isExist(path))
     {
-        qDebug() << QString("Failed to apply style - %1 not found.").arg(style);
+        std::cout << "Failed to apply style - " << path << " not found." << std::endl;
         return 1;
     }
 
-    file.open(QFile::ReadOnly);
+    std::ifstream file(path);
 
-    QString styleSheet = QLatin1String(file.readAll());
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+
+    std::string styleSheet = buffer.str();
+
     if (Mere::Utils::StringUtils::isBlank(styleSheet))
     {
-        qDebug() << QString("Failed to apply style - %1 contain nothing.").arg(style);
+        std::cout << "Failed to apply style - " << path << " contain nothing." << std::endl;
         return 2;
     }
 
-    qDebug() << "Applying following stylesheet: " << style;
-    setStyleSheet(styleSheet);
+    std::cout << "Applying following stylesheet: " << path << std::endl;
+    setStyleSheet(QString::fromStdString(styleSheet));
 
     return 0;
 }

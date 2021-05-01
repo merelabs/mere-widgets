@@ -5,55 +5,55 @@
 #endif
 
 
-Mere::App::~App()
+Mere::Widgets::App::~App()
 {
 
 }
 
-Mere::App::App(int &argc, char **argv)
+Mere::Widgets::App::App(int &argc, char **argv)
     : QApplication(argc, argv)
 {
     #ifdef APP_CODE
-    const QString AppCode   = APP_CODE;
+    const std::string AppCode   = APP_CODE;
     #else
-    const QString AppCode   = "unknown";
+    const std::string AppCode   = "unknown";
     #endif
 
     #ifdef APP_NAME
-    const QString AppName   = APP_NAME;
+    const std::string AppName   = APP_NAME;
     #else
-    const QString AppName   = "mere-unknown";
+    const std::string AppName   = "mere-unknown";
     #endif
 
     #ifdef APP_VERSION
-    const QString AppVersion= APP_VERSION;
+    const std::string AppVersion= APP_VERSION;
     #else
-    const QString AppVersion= "0.0.0b";
+    const std::string AppVersion= "0.0.0b";
     #endif
 
     setAppCode(AppCode);
-    setApplicationName(AppName);
-    setApplicationVersion(AppVersion);
+    setApplicationName(QString::fromStdString(AppName));
+    setApplicationVersion(QString::fromStdString(AppVersion));
 }
 
-QString Mere::App::appCode() const
+std::string Mere::Widgets::App::appCode() const
 {
     return m_code;
 }
 
-void Mere::App::setAppCode(QString code)
+void Mere::Widgets::App::setAppCode(const std::string &code)
 {
     m_code = code;
     emit codeChanged(m_code);
 }
 
 #ifndef MERE_NO_LOGGER
-MereLogger* Mere::App::logger()
+MereLogger* Mere::Widgets::App::logger()
 {
     return m_logger;
 }
 
-void Mere::App::setLogger(MereLogger *logger)
+void Mere::Widgets::App::setLogger(MereLogger *logger)
 {
     m_logger = logger;
 }
