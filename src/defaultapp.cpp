@@ -3,9 +3,9 @@
 #include "mere/utils/stringutils.h"
 #include "mere/utils/fileutils.h"
 
-#include <fstream>
-#include <sstream>
 #include <iostream>
+
+#include <QFile>
 
 Mere::Widgets::DefaultApp::~DefaultApp()
 {
@@ -43,19 +43,16 @@ int Mere::Widgets::DefaultApp::initStyle()
 
 int Mere::Widgets::DefaultApp::applyStyle(const std::string &path)
 {
-    if(!Mere::Utils::FileUtils::isExist(path))
+    QFile file(path.c_str());
+    if(!file.exists())
     {
         std::cout << "Failed to apply style - " << path << " not found." << std::endl;
         return 1;
     }
 
-    std::ifstream file(path);
+    file.open(QFile::ReadOnly);
 
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-
-    std::string styleSheet = buffer.str();
-
+    QString styleSheet = QLatin1String(file.readAll());
     if (Mere::Utils::StringUtils::isBlank(styleSheet))
     {
         std::cout << "Failed to apply style - " << path << " contain nothing." << std::endl;
@@ -63,7 +60,7 @@ int Mere::Widgets::DefaultApp::applyStyle(const std::string &path)
     }
 
     std::cout << "Applying following stylesheet: " << path << std::endl;
-    setStyleSheet(QString::fromStdString(styleSheet));
 
+    setStyleSheet(styleSheet);
     return 0;
 }
