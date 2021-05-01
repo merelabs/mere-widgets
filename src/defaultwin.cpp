@@ -4,11 +4,11 @@
 #include <QVBoxLayout>
 
 Mere::Widgets::DefaultWin::DefaultWin(QWidget *parent)
-    : MereWin(parent)
+    : Win(parent)
 {
     setObjectName(QString::fromUtf8("MereDefaultWin"));
 
-    QVBoxLayout *layout = new QVBoxLayout();
+    QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setAlignment(Qt::AlignTop);
     setLayout(layout);
 }

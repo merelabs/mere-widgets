@@ -1,8 +1,8 @@
-#ifndef MEREDEFAULTWIN_H
-#define MEREDEFAULTWIN_H
+#ifndef MERE_WIDGETS_DEFAULTWIN_H
+#define MERE_WIDGETS_DEFAULTWIN_H
 
-#include "merewin.h"
-#include "meremoveable.h"
+#include "win.h"
+#include "moveable.h"
 
 #include <QWidget>
 
@@ -14,7 +14,7 @@ namespace Widgets
 
 class SimpleWinHeader;
 
-class DefaultWin : public MereWin, public MereMoveable
+class DefaultWin : public Win, public Moveable
 {
     Q_OBJECT
 public:
@@ -28,10 +28,6 @@ protected:
 //    virtual void adjustSize(const QSize &size) override;
     virtual void adjustMove(const QPoint &point) override;
 
-signals:
-
-public slots:
-
 private:
     SimpleWinHeader *m_header;
 };
@@ -39,4 +35,4 @@ private:
 }
 }
 
-#endif // MEREDEFAULTWIN_H
+#endif // MERE_WIDGETS_DEFAULTWIN_H

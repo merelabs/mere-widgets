@@ -1,11 +1,13 @@
-#ifndef MERERESIABLEWIN_H
-#define MERERESIABLEWIN_H
+#ifndef MERE_WIDGETS_RESIABLEWIN_H
+#define MERE_WIDGETS_RESIABLEWIN_H
 
 #include "defaultwin.h"
 
-namespace Mere {
+namespace Mere
+{
 
-namespace Widgets {
+namespace Widgets
+{
 
 class Resizer;
 class ResizeableWin : public DefaultWin
@@ -24,4 +26,4 @@ private:
 }
 }
 
-#endif // MERERESIABLEWIN_H
+#endif // MERE_WIDGETS_RESIABLEWIN_H

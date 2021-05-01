@@ -1,5 +1,5 @@
-#ifndef MEREWIDGETS_RESIZER_H
-#define MEREWIDGETS_RESIZER_H
+#ifndef MERE_WIDGETS_RESIZER_H
+#define MERE_WIDGETS_RESIZER_H
 
 #include <QWidget>
 #include <QDebug>
@@ -16,12 +16,12 @@ public:
     virtual ~Resizer();
     explicit Resizer(QWidget *parent);
 
-    QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 protected:
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 
 private:
     bool m_lock;
@@ -33,4 +33,4 @@ private:
 }
 }
 
-#endif // MEREWIDGETS_RESIZER_H
+#endif // MERE_WIDGETS_RESIZER_H

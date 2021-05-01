@@ -1,18 +1,18 @@
-#include "merewin.h"
+#include "win.h"
 
-MereWin::~MereWin()
+Mere::Widgets::Win::~Win()
 {
 
 }
 
-MereWin::MereWin(QWidget *parent)
+Mere::Widgets::Win::Win(QWidget *parent)
     : QWidget(parent)
 {
     setObjectName(QString::fromUtf8("MereWin"));
     setWindowFlags(Qt::FramelessWindowHint);
 }
 
-void MereWin::initUI()
+void Mere::Widgets::Win::initUI()
 {
     initHeaderUI();
     initContentUI();

@@ -29,7 +29,6 @@ SOURCES += \
     src/merelabel.cpp \
     src/mereclickdetector.cpp \
     src/mereshadowwidget.cpp \
-    src/merewin.cpp \
     src/noteeditor.cpp \
     src/noteeditorpanel.cpp \
     src/panelview.cpp \
@@ -43,6 +42,7 @@ SOURCES += \
     src/simplewinheaderex.cpp \
     src/statusbar.cpp \
     src/texteditor.cpp \
+    src/win.cpp \
     src/winheader.cpp
 
 HEADERS += \
@@ -53,14 +53,13 @@ HEADERS += \
     src/editablelabel.h \
     src/global.h \
     src/headerview.h \
-    src/meremoveable.h \
     src/merepushmenu.h \
     src/mereballonwidget.h \
     src/merelabel.h \
     src/merepopupmenu.h \
     src/mereclickdetector.h \
     src/mereshadowwidget.h \
-    src/merewin.h \
+    src/moveable.h \
     src/noteeditor.h \
     src/noteeditorpanel.h \
     src/panelview.h \
@@ -74,6 +73,7 @@ HEADERS += \
     src/simplewinheaderex.h \
     src/statusbar.h \
     src/texteditor.h \
+    src/win.h \
     src/winheader.h
 
 RESOURCES += \
