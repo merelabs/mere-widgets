@@ -1,28 +1,25 @@
-#ifndef MEREWINDEFAULTHEADER_H
-#define MEREWINDEFAULTHEADER_H
+#ifndef MERE_WIDGETS_WINDEFAULTHEADER_H
+#define MERE_WIDGETS_WINDEFAULTHEADER_H
 
 #include "simplewinheader.h"
 
-namespace Mere {
+namespace Mere
+{
 
-namespace Widgets {
+namespace Widgets
+{
 
 class SimpleWinHeaderEx : public SimpleWinHeader
 {
     Q_OBJECT
 public:
-    ~SimpleWinHeaderEx();
+    virtual ~SimpleWinHeaderEx();
     explicit SimpleWinHeaderEx(QWidget *parent = nullptr);
-
-    void setTitle(const QString &title);
 
 protected:
     virtual void initCenterPanel() override;
-
-private:
-    QLabel *m_title;
 };
 
 }
 }
-#endif // MEREWINDEFAULTHEADER_H
+#endif // MERE_WIDGETS_WINDEFAULTHEADER_H

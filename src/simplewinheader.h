@@ -1,5 +1,5 @@
-#ifndef MERESIMPLEWINHEADER_H
-#define MERESIMPLEWINHEADER_H
+#ifndef MERE_WIDGETS_SIMPLEWINHEADER_H
+#define MERE_WIDGETS_SIMPLEWINHEADER_H
 
 #include "defaultwinheader.h"
 
@@ -31,4 +31,4 @@ private:
 }
 
 
-#endif // MERESIMPLEWINHEADER_H
+#endif // MERE_WIDGETS_SIMPLEWINHEADER_H

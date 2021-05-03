@@ -3,6 +3,15 @@
 
 #include <QResizeEvent>
 
+Mere::Widgets::ResizeableWin::~ResizeableWin()
+{
+    if(m_resizer)
+    {
+        delete m_resizer;
+        m_resizer = nullptr;
+    }
+}
+
 Mere::Widgets::ResizeableWin::ResizeableWin(QWidget *parent)
     : DefaultWin(parent)
 {

@@ -14,6 +14,7 @@ class MERE_WIDGETS_LIBSPEC ResizeableWin : public DefaultWin
 {
     Q_OBJECT
 public:
+    virtual ~ResizeableWin();
     explicit ResizeableWin(QWidget *parent = nullptr);
 
 protected:

@@ -18,6 +18,7 @@ class MERE_WIDGETS_LIBSPEC DefaultWin : public Win, public Moveable
 {
     Q_OBJECT
 public:
+    virtual ~DefaultWin();
     explicit DefaultWin(QWidget *parent = nullptr);
 
 protected:
@@ -25,7 +26,6 @@ protected:
     virtual void initContentUI() override;
     virtual void initFooterUI() override;
 
-//    virtual void adjustSize(const QSize &size) override;
     virtual void adjustMove(const QPoint &point) override;
 
 private:

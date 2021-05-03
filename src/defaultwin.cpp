@@ -3,6 +3,11 @@
 
 #include <QVBoxLayout>
 
+Mere::Widgets::DefaultWin::~DefaultWin()
+{
+
+}
+
 Mere::Widgets::DefaultWin::DefaultWin(QWidget *parent)
     : Win(parent)
 {
@@ -31,14 +36,9 @@ void Mere::Widgets::DefaultWin::initFooterUI()
 
 }
 
-//void Mere::Widgets::DefaultWin::adjustSize(const QSize &size)
-//{
-
-//}
-
 void Mere::Widgets::DefaultWin::adjustMove(const QPoint &point)
 {
-
+    Q_UNUSED(point)
 }
 
 

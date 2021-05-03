@@ -4,7 +4,6 @@
 #include "app.h"
 
 #include <QObject>
-#include <QDebug>
 
 namespace Mere
 {

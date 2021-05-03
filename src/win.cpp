@@ -2,7 +2,6 @@
 
 Mere::Widgets::Win::~Win()
 {
-
 }
 
 Mere::Widgets::Win::Win(QWidget *parent)

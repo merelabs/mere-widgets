@@ -1,11 +1,14 @@
-#ifndef HEADERVIEW_H
-#define HEADERVIEW_H
+#ifndef MERE_WIDGETS_HEADERVIEW_H
+#define MERE_WIDGETS_HEADERVIEW_H
 
 #include "global.h"
 #include <QWidget>
 
-namespace Mere {
-namespace Widgets {
+namespace Mere
+{
+
+namespace Widgets
+{
 
 class MERE_WIDGETS_LIBSPEC HeaderView : public QWidget
 {
@@ -25,4 +28,4 @@ protected:
 }
 
 
-#endif // HEADERVIEW_H
+#endif // MERE_WIDGETS_HEADERVIEW_H
