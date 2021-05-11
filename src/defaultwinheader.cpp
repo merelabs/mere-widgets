@@ -19,7 +19,9 @@ void Mere::Widgets::DefaultWinHeader::initRightPanel()
     margins.setRight(margins.right() + 3);
     layout()->setContentsMargins(margins);
 
-    QPushButton *close = new QPushButton(QIcon(":/widgets/icons/times-circle.svg"),"", this);    
+    QPushButton *close = new QPushButton(QIcon(":/widgets/icons/times-circle.svg"),"", this);
+    close->setObjectName("DefaultWinHeaderCloseButton");
+    close->setStyleSheet("QPushButton#DefaultWinHeaderCloseButton:hover:pressed{border: none;}");
     close->setIconSize(QSize(20, 20));
     close->setMaximumSize(QSize(20, 20));
     close->setFlat(true);
