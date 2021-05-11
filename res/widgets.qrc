@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/widgets">
+        <file>icons/bold.svg</file>
+        <file>icons/italic.svg</file>
+        <file>icons/strikethrough.svg</file>
+        <file>icons/subscript.svg</file>
+        <file>icons/superscript.svg</file>
+        <file>icons/underline.svg</file>
+        <file>icons/times-circle.svg</file>
+        <file>resize.png</file>
+        <file>icons/paint-roller.svg</file>
+        <file>icons/palette.svg</file>
+    </qresource>
+</RCC>
