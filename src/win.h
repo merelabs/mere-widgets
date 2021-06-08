@@ -23,6 +23,8 @@ protected:
     virtual void initHeaderUI() = 0;
     virtual void initContentUI()= 0;
     virtual void initFooterUI() = 0;
+
+    virtual void paintEvent(QPaintEvent *event) override;
 };
 
 }
