@@ -2,7 +2,6 @@
 #define MERE_WIDGETS_APP_H
 
 #include "global.h"
-
 #include <QApplication>
 
 #ifndef MERE_NO_LOGGER

@@ -15,6 +15,7 @@ Mere::Widgets::DefaultApp::~DefaultApp()
 Mere::Widgets::DefaultApp::DefaultApp(int &argc, char **argv)
     : App(argc, argv)
 {
+
 }
 
 int Mere::Widgets::DefaultApp::init()
