@@ -2,6 +2,8 @@
 #define MERE_WIDGETS_APP_H
 
 #include "global.h"
+#include <iostream>
+
 #include <QApplication>
 
 #ifndef MERE_NO_LOGGER
@@ -36,8 +38,6 @@ signals:
 
 public slots:
 private:
-    std::string m_code;
-
 #ifndef MERE_NO_LOGGER
     MereLogger* m_logger;
 #endif

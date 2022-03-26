@@ -15,13 +15,19 @@ Mere::Widgets::App::App(int &argc, char **argv)
 
 std::string Mere::Widgets::App::appCode() const
 {
-    return m_code;
+    return qApp->property("appCode").toString().toStdString();
 }
 
 void Mere::Widgets::App::setAppCode(const std::string &code)
 {
-    m_code = code;
-    emit codeChanged(m_code);
+    QVariant appCode = qApp->property("appCode");
+    if (appCode.isValid())
+    {
+        std::cout << "App code already set, can't be override;" << std::endl;
+        return;
+    }
+    qApp->setProperty("appCode", code.c_str());
+    emit codeChanged(code);
 }
 
 #ifndef MERE_NO_LOGGER
