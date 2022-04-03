@@ -2,6 +2,7 @@
 #define MERE_WIDGETS_APP_H
 
 #include "global.h"
+#include <iostream>
 
 #include <QApplication>
 
@@ -24,6 +25,12 @@ public:
     std::string appCode() const;
     void setAppCode(const std::string &code);
 
+    std::string appName() const;
+    void setAppName(const std::string &name);
+
+    std::string appVersion() const;
+    void setAppVersion(const std::string &version);
+
 #ifndef MERE_NO_LOGGER
     MereLogger* logger();
     void setLogger(MereLogger *logger);
@@ -33,12 +40,12 @@ private:
     virtual int initStyle() = 0;
 
 signals:
-    void codeChanged(const std::string &code);
+    void codeSet(const std::string &code);
+    void nameSet(const std::string &name);
+    void versionSet(const std::string &version);
 
 public slots:
 private:
-    std::string m_code;
-
 #ifndef MERE_NO_LOGGER
     MereLogger* m_logger;
 #endif
