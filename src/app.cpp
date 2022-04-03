@@ -27,7 +27,41 @@ void Mere::Widgets::App::setAppCode(const std::string &code)
         return;
     }
     qApp->setProperty("appCode", code.c_str());
-    emit codeChanged(code);
+    emit codeSet(code);
+}
+
+std::string Mere::Widgets::App::appName() const
+{
+    return qApp->applicationName().toStdString();
+}
+
+void Mere::Widgets::App::setAppName(const std::string &name)
+{
+    QString appName = qApp->applicationName();
+    if (!appName.isEmpty())
+    {
+        std::cout << "App name already set, can't be override;" << std::endl;
+        return;
+    }
+    qApp->setApplicationName(QString::fromStdString(name));
+    emit nameSet(name);
+}
+
+std::string Mere::Widgets::App::appVersion() const
+{
+    return qApp->applicationVersion().toStdString();
+}
+
+void Mere::Widgets::App::setAppVersion(const std::string &version)
+{
+    QString appVersion = qApp->applicationVersion();
+    if (!appVersion.isEmpty())
+    {
+        std::cout << "App version already set, can't be override;" << std::endl;
+        return;
+    }
+    qApp->setApplicationVersion(QString::fromStdString(version));
+    emit versionSet(version);
 }
 
 #ifndef MERE_NO_LOGGER
