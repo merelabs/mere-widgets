@@ -9,9 +9,7 @@
 class MereLogger;
 #endif
 
-namespace Mere
-{
-namespace Widgets
+namespace Mere::Widgets
 {
 
 class MERE_WIDGETS_LIBSPEC App : public QApplication
@@ -43,7 +41,7 @@ private:
 };
 
 }
-}
+
 
 
 #endif // MERE_WIDGETS_APP_H

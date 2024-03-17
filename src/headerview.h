@@ -4,10 +4,7 @@
 #include "global.h"
 #include <QWidget>
 
-namespace Mere
-{
-
-namespace Widgets
+namespace Mere::Widgets
 {
 
 class MERE_WIDGETS_LIBSPEC HeaderView : public QWidget
@@ -25,7 +22,7 @@ protected:
 };
 
 }
-}
+
 
 
 #endif // MERE_WIDGETS_HEADERVIEW_H

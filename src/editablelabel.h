@@ -4,10 +4,7 @@
 #include <QLabel>
 #include <QDebug>
 
-namespace Mere
-{
-
-namespace  Widgets
+namespace Mere::Widgets
 {
 
 class EditableLabel : public QLabel
@@ -41,5 +38,5 @@ private:
 };
 
 }
-}
+
 #endif // MERE_WIDGETS_EDITABLELABEL_H

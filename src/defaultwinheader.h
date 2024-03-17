@@ -3,10 +3,7 @@
 
 #include "winheader.h"
 
-namespace Mere
-{
-
-namespace Widgets
+namespace Mere::Widgets
 {
 
 class DefaultWinHeader : public WinHeader
@@ -24,7 +21,7 @@ signals:
 };
 
 }
-}
+
 
 
 #endif // MERE_WIDGETS_DEFAULTWINHEADER_H

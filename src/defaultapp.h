@@ -5,10 +5,7 @@
 
 #include <QObject>
 
-namespace Mere
-{
-
-namespace Widgets
+namespace Mere::Widgets
 {
 
 class MERE_WIDGETS_LIBSPEC DefaultApp : public App
@@ -26,5 +23,5 @@ private:
 };
 
 }
-}
+
 #endif // MERE_WIDGETS_DEFAULTAPP_H

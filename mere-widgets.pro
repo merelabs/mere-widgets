@@ -24,7 +24,7 @@ SOURCES += \
     src/defaultwinheader.cpp \
     src/editablelabel.cpp \
     src/headerview.cpp \
-    src/mereiconlabel.cpp \
+    src/iconlabel.cpp \
     src/merepushmenu.cpp \
     src/mereballonwidget.cpp \
     src/merelabel.cpp \
@@ -54,7 +54,7 @@ HEADERS += \
     src/editablelabel.h \
     src/global.h \
     src/headerview.h \
-    src/mereiconlabel.h \
+    src/iconlabel.h \
     src/merepushmenu.h \
     src/mereballonwidget.h \
     src/merelabel.h \
