@@ -1,7 +1,7 @@
 #include "app.h"
 
 #ifndef MERE_NO_LOGGER
-#include "mere/log/logger.h"
+//#include "mere/log/logger.h"
 #endif
 
 
@@ -38,13 +38,13 @@ Mere::Widgets::App::App(int &argc, char **argv)
 
 std::string Mere::Widgets::App::appCode() const
 {
-    return m_code;
+    return qApp->property("appCode").toString().toStdString();
 }
 
 void Mere::Widgets::App::setAppCode(const std::string &code)
 {
-    m_code = code;
-    emit codeChanged(m_code);
+    qApp->setProperty("appCode", code.c_str());
+    emit codeChanged(code);
 }
 
 #ifndef MERE_NO_LOGGER

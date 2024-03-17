@@ -1,4 +1,4 @@
-include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
+#include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
 #include(../../mere-log/mere-log-lib/mere-log-lib.pri)
 #include(../../mere-config/mere-config-lib/mere-config-lib.pri)
 
@@ -24,6 +24,7 @@ SOURCES += \
     src/defaultwinheader.cpp \
     src/editablelabel.cpp \
     src/headerview.cpp \
+    src/mereiconlabel.cpp \
     src/merepushmenu.cpp \
     src/mereballonwidget.cpp \
     src/merelabel.cpp \
@@ -53,10 +54,10 @@ HEADERS += \
     src/editablelabel.h \
     src/global.h \
     src/headerview.h \
+    src/mereiconlabel.h \
     src/merepushmenu.h \
     src/mereballonwidget.h \
     src/merelabel.h \
-    src/merepopupmenu.h \
     src/mereclickdetector.h \
     src/mereshadowwidget.h \
     src/moveable.h \

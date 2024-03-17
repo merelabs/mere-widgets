@@ -23,7 +23,7 @@ void Mere::Widgets::EditableLabel::setEditable(bool flag)
 void Mere::Widgets::EditableLabel::setPlaceholder(const QString &placeholder)
 {
     QPalette palette = this->palette();
-    palette.setColor(QPalette::Foreground, Qt::gray);
+    palette.setColor(QPalette::WindowText, Qt::gray);
     setPalette(palette);
 
     m_placeholderText = placeholder;
@@ -35,7 +35,7 @@ void Mere::Widgets::EditableLabel::setPlaceholder(const QString &placeholder)
 void Mere::Widgets::EditableLabel::resetPlaceholder()
 {
     QPalette palette = this->palette();
-    palette.setColor(QPalette::Foreground, Qt::gray);
+    palette.setColor(QPalette::WindowText, Qt::gray);
     setPalette(palette);
 
     m_placeholderMark = true;
@@ -47,7 +47,7 @@ void Mere::Widgets::EditableLabel::clearPlaceholder()
     if (!m_placeholderMark) return;
 
     QPalette palette = this->palette();
-    palette.setColor(QPalette::Foreground, Qt::black);
+    palette.setColor(QPalette::WindowText, Qt::black);
     setPalette(palette);
     QLabel::setText("");
     m_placeholderMark = false;

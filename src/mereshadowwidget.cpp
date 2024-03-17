@@ -3,7 +3,7 @@
 #include <QPainter>
 #include <QVBoxLayout>
 #include <QResizeEvent>
-#include <QDesktopWidget>
+#include <QGuiApplication>
 #include <QGraphicsDropShadowEffect>
 
 MereShadowWidget::MereShadowWidget(QWidget *parent)
@@ -17,7 +17,7 @@ MereShadowWidget::MereShadowWidget(QWidget *parent)
     moveToCenterScreen();
 
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, QColor(249, 249, 249, 50));
+    pal.setColor(QPalette::Window, QColor(249, 249, 249, 50));
     setAutoFillBackground(true);
     setPalette(pal);
 
@@ -57,8 +57,7 @@ void MereShadowWidget::initFooterUI()
 
 void MereShadowWidget::moveToCenterScreen()
 {
-    QDesktopWidget desktop;
-    QRect rect = desktop.screenGeometry();
+    QRect rect = QGuiApplication::primaryScreen()->availableGeometry();
 
     QPoint center = rect.center() - this->rect().center();
     move(center);

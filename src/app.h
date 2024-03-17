@@ -37,8 +37,6 @@ signals:
 
 public slots:
 private:
-    std::string m_code;
-
 #ifndef MERE_NO_LOGGER
     MereLogger* m_logger;
 #endif

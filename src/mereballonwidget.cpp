@@ -1,8 +1,7 @@
 #include "mereballonwidget.h"
 
 #include <QPainter>
-#include <QDesktopWidget>
-#include <QApplication>
+#include <QGuiApplication>
 
 MereBallonWidget::MereBallonWidget(QWidget *parent)
     : QWidget(parent),
@@ -13,7 +12,7 @@ MereBallonWidget::MereBallonWidget(QWidget *parent)
 //    setParent(0);
 
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, QColor(0, 46, 99, 25));
+    pal.setColor(QPalette::Window, QColor(0, 46, 99, 25));
 //    pal.setColor(QPalette::Background, Qt::yellow);
     setAutoFillBackground(true);
     setPalette(pal);
@@ -62,7 +61,7 @@ void MereBallonWidget::showEvent(QShowEvent *event)
             x = point.x() - frameGeometry().width()/2;
             y = point.y() - frameGeometry().height();
 
-            QRect screen = QApplication::desktop()->screenGeometry();
+            QRect screen = QGuiApplication::primaryScreen()->availableGeometry();
             if (x + frameGeometry().width() >= screen.width())
             {
                 m_shiftLeft = x + frameGeometry().width() - screen.width() + 3;
@@ -79,7 +78,7 @@ void MereBallonWidget::showEvent(QShowEvent *event)
             x = point.x();
             y = point.y() - frameGeometry().height()/2;
 
-            QRect screen = QApplication::desktop()->screenGeometry();
+            QRect screen = QGuiApplication::primaryScreen() ->availableGeometry();
             if (y + frameGeometry().height() >= screen.height())
             {
                 m_shiftTop = y + frameGeometry().height() - screen.height() + 10;
@@ -144,7 +143,7 @@ void MereBallonWidget::paintEvent(QPaintEvent*event)
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setRenderHint(QPainter::HighQualityAntialiasing, true);
+//    painter.setRenderHint(QPainter::HighQualityAntialiasing, true);
 //    painter.setBrush(QBrush(QColor(100, 46, 99)));
     painter.setBrush(QBrush(Qt::white));
     painter.setPen(Qt::lightGray);
