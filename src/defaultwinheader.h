@@ -18,6 +18,8 @@ protected:
 
 signals:
     void closed();
+    void restore();
+    void maximize();
 };
 
 }

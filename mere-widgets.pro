@@ -41,6 +41,7 @@ SOURCES += \
     src/scratcheditorscroller.cpp \
     src/simplewinheader.cpp \
     src/simplewinheaderex.cpp \
+    src/statebutton.cpp \
     src/statusbar.cpp \
     src/texteditor.cpp \
     src/win.cpp \
@@ -72,6 +73,7 @@ HEADERS += \
     src/scratcheditorscroller.h \
     src/simplewinheader.h \
     src/simplewinheaderex.h \
+    src/statebutton.h \
     src/statusbar.h \
     src/texteditor.h \
     src/win.h \
