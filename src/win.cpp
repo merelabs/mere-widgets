@@ -26,7 +26,7 @@ void Mere::Widgets::Win::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
 
     QStyleOption option;
-    option.init(this);
+    option.initFrom(this);
     QPainter painter(this);
     style()->drawPrimitive(QStyle::PE_Widget, &option, &painter, this);
 

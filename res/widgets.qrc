@@ -10,5 +10,7 @@
         <file>resize.png</file>
         <file>icons/paint-roller.svg</file>
         <file>icons/palette.svg</file>
+        <file>icons/maximize.svg</file>
+        <file>icons/minimize.svg</file>
     </qresource>
 </RCC>

@@ -6,10 +6,7 @@
 
 #include <QWidget>
 
-namespace Mere
-{
-
-namespace Widgets
+namespace Mere::Widgets
 {
 
 class SimpleWinHeader;
@@ -33,6 +30,6 @@ private:
 };
 
 }
-}
+
 
 #endif // MERE_WIDGETS_DEFAULTWIN_H

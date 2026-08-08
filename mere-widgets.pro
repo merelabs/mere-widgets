@@ -1,4 +1,4 @@
-include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
+#include(../../mere-utils/mere-utils-lib/mere-utils-lib.pri)
 #include(../../mere-log/mere-log-lib/mere-log-lib.pri)
 #include(../../mere-config/mere-config-lib/mere-config-lib.pri)
 
@@ -24,6 +24,7 @@ SOURCES += \
     src/defaultwinheader.cpp \
     src/editablelabel.cpp \
     src/headerview.cpp \
+    src/iconlabel.cpp \
     src/merepushmenu.cpp \
     src/mereballonwidget.cpp \
     src/merelabel.cpp \
@@ -40,6 +41,7 @@ SOURCES += \
     src/scratcheditorscroller.cpp \
     src/simplewinheader.cpp \
     src/simplewinheaderex.cpp \
+    src/statebutton.cpp \
     src/statusbar.cpp \
     src/texteditor.cpp \
     src/win.cpp \
@@ -53,10 +55,10 @@ HEADERS += \
     src/editablelabel.h \
     src/global.h \
     src/headerview.h \
+    src/iconlabel.h \
     src/merepushmenu.h \
     src/mereballonwidget.h \
     src/merelabel.h \
-    src/merepopupmenu.h \
     src/mereclickdetector.h \
     src/mereshadowwidget.h \
     src/moveable.h \
@@ -71,6 +73,7 @@ HEADERS += \
     src/scratcheditorscroller.h \
     src/simplewinheader.h \
     src/simplewinheaderex.h \
+    src/statebutton.h \
     src/statusbar.h \
     src/texteditor.h \
     src/win.h \

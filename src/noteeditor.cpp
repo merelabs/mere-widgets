@@ -26,7 +26,7 @@ Mere::Widgets::NoteEditor::NoteEditor(QWidget *parent)
 {
     QPalette pal = palette();
     pal.setColor(QPalette::Base, Qt::transparent);
-    pal.setColor(QPalette::Background, Qt::transparent);
+    pal.setColor(QPalette::Window, Qt::transparent);
     setAutoFillBackground(true);
     setPalette(pal);
 

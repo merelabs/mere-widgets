@@ -3,10 +3,7 @@
 
 #include "winheader.h"
 
-namespace Mere
-{
-
-namespace Widgets
+namespace Mere::Widgets
 {
 
 class DefaultWinHeader : public WinHeader
@@ -21,10 +18,12 @@ protected:
 
 signals:
     void closed();
+    void restore();
+    void maximize();
 };
 
 }
-}
+
 
 
 #endif // MERE_WIDGETS_DEFAULTWINHEADER_H
