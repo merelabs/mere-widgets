@@ -15,10 +15,13 @@ public:
     explicit HeaderView(QWidget *parent = nullptr);
 
 protected:
-    virtual void initLeftPanel() = 0;
-    virtual void initCenterPanel() = 0;
-    virtual void initRightPanel() = 0;
+    // virtual void initLeftPanel() = 0;
+    // virtual void initCenterPanel() = 0;
+    // virtual void initRightPanel() = 0;
 
+    virtual void initLeftPanel(QWidget *container)  = 0;
+    virtual void initCenterPanel(QWidget *container)= 0;
+    virtual void initRightPanel(QWidget *container)  = 0;
 };
 
 }

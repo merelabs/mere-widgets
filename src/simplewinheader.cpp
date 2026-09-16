@@ -18,16 +18,20 @@ Mere::Widgets::SimpleWinHeader::SimpleWinHeader(QWidget *parent)
 
 }
 
-void Mere::Widgets::SimpleWinHeader::initLeftPanel()
+void Mere::Widgets::SimpleWinHeader::initLeftPanel(QWidget *container)
 {
 }
 
-void Mere::Widgets::SimpleWinHeader::initCenterPanel()
+void Mere::Widgets::SimpleWinHeader::initCenterPanel(QWidget *container)
 {
+    QHBoxLayout *layout = new QHBoxLayout(container);
+    layout->setContentsMargins(3, 3, 3, 3);
+    layout->setSpacing(3);
+
      m_title = new QLabel("[Unknown app]");
      m_title->setAlignment(Qt::AlignCenter);
      m_title->setObjectName("SimpleWinHeaderTitle");
-     layout()->addWidget(m_title);
+     layout->addWidget(m_title);
 }
 
 void Mere::Widgets::SimpleWinHeader::setTitle(const QString &title)

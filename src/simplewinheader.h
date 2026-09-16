@@ -19,9 +19,9 @@ public:
     void setTitle(const QString &title);
 
 protected:
-    virtual void initLeftPanel() override;
-    virtual void initCenterPanel() override;
-//    virtual void initRightPanel() override;
+    virtual void initLeftPanel(QWidget *container) override;
+    virtual void initCenterPanel(QWidget *container) override;
+//    virtual void initRightPanel(QWidget *container) override;
 
 private:
     QLabel *m_title;

@@ -30,6 +30,10 @@ private:
     QPoint m_pos;
 
     QWidget *m_parent;
+
+    QWidget *m_leftPane;
+    QWidget *m_centerPane;
+    QWidget *m_rightPane;
 };
 
 }

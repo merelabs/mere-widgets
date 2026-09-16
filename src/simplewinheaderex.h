@@ -16,8 +16,17 @@ public:
     virtual ~SimpleWinHeaderEx();
     explicit SimpleWinHeaderEx(QWidget *parent = nullptr);
 
+    void setTitle(const QString &title);
+
 protected:
-    virtual void initCenterPanel() override;
+    virtual void initCenterPanel(QWidget *container) override;
+
+private:
+    QString username() const;
+
+private:
+    QLabel *m_host;
+    QLabel *m_title;
 };
 
 }

@@ -14,11 +14,12 @@ Mere::Widgets::DefaultWinHeader::DefaultWinHeader(QWidget *parent)
 {
 }
 
-void Mere::Widgets::DefaultWinHeader::initRightPanel()
+void Mere::Widgets::DefaultWinHeader::initRightPanel(QWidget *container)
 {
-    QMargins margins = layout()->contentsMargins();
-    margins.setRight(margins.right() + 5);
-    layout()->setContentsMargins(margins);
+    QHBoxLayout *layout = new QHBoxLayout(container);
+    layout->setContentsMargins(5, 5, 10, 5);
+    layout->setSpacing(10);
+    layout->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
     auto state = new StateButton(QIcon(":/widgets/icons/maximize.svg"), QIcon(":/widgets/icons/minimize.svg"), this);
     state->setObjectName("DefaultWinHeaderStateButton");
@@ -29,7 +30,7 @@ void Mere::Widgets::DefaultWinHeader::initRightPanel()
     connect(state, &StateButton::clicked, this, [state, this]() {
         state->isToggled() ? emit maximize() : emit restore();
     });
-    layout()->addWidget(state);
+    layout->addWidget(state);
 
 
     auto close = new QPushButton(QIcon(":/widgets/icons/times-circle.svg"),"", this);
@@ -40,7 +41,7 @@ void Mere::Widgets::DefaultWinHeader::initRightPanel()
     close->setFlat(true);
     close->setFocusPolicy(Qt::NoFocus);
 
-    layout()->addWidget(close);
+    layout->addWidget(close);
 
     connect(close, SIGNAL(clicked(bool)), this, SIGNAL(closed()));
 }

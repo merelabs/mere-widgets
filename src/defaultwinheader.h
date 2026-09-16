@@ -14,7 +14,7 @@ public:
     explicit DefaultWinHeader(QWidget *parent = nullptr);
 
 protected:
-    virtual void initRightPanel() override;
+    virtual void initRightPanel(QWidget *container) override;
 
 signals:
     void closed();

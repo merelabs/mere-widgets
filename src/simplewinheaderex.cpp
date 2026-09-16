@@ -16,22 +16,39 @@ Mere::Widgets::SimpleWinHeaderEx::SimpleWinHeaderEx(QWidget *parent)
     setMaximumHeight(48);
 }
 
-void Mere::Widgets::SimpleWinHeaderEx::initCenterPanel()
+void Mere::Widgets::SimpleWinHeaderEx::initCenterPanel(QWidget *container)
 {
-    SimpleWinHeader::initCenterPanel();
-
-    QWidget *pane = new QWidget(this);
-    layout()->addWidget(pane);
-
-    QVBoxLayout *layout = new QVBoxLayout(pane);
-    layout->setContentsMargins(0, 0, 0, 0);
+    QVBoxLayout *layout = new QVBoxLayout(container);
+    layout->setContentsMargins(3, 3, 3, 3);
     layout->setSpacing(3);
-    layout->setAlignment(Qt::AlignCenter);
+    layout->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
 
-    QLabel *title = findChild<QLabel *>("SimpleWinHeaderTitle");
-    layout->addWidget(title);
+    m_title = new QLabel("[Unknown app]");
+    m_title->setAlignment(Qt::AlignCenter);
+    m_title->setObjectName("SimpleWinHeaderExTitle");
 
-    QLabel *host = new QLabel(QString("@").append(QHostInfo::localHostName()));
-    host->setAlignment(Qt::AlignCenter);
-    layout->addWidget(host);
+    QFont font = m_title->font();
+    font.setBold(true);
+    m_title->setFont(font);
+
+    layout->addWidget(m_title);
+
+    m_host = new QLabel(QString("%1@%2").arg(username()).arg(QHostInfo::localHostName()));
+    m_host->setAlignment(Qt::AlignCenter);
+    layout->addWidget(m_host);
+}
+
+void Mere::Widgets::SimpleWinHeaderEx::setTitle(const QString &title)
+{
+    m_title->setText(title);
+}
+
+
+
+QString Mere::Widgets::SimpleWinHeaderEx::username() const
+{
+    QString name = qgetenv("USER");
+    if (name.isEmpty())
+        name = qgetenv("USERNAME");
+    return name;
 }
