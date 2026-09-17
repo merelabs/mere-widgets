@@ -1,6 +1,7 @@
 #include "winheader.h"
 
 #include <QLayout>
+#include <QWindow>
 #include <QHBoxLayout>
 
 Mere::Widgets::WinHeader::~WinHeader()
@@ -44,18 +45,39 @@ void Mere::Widgets::WinHeader::mousePressEvent(QMouseEvent *event)
     QMargins margins = m_parent->layout()->contentsMargins();
     QPoint  point(margins.left(), margins.top());
     m_pos = event->pos() + point;
+
+    QString platform = QGuiApplication::platformName();
+    if (platform.startsWith("wayland"))
+    {
+        if (event->button() == Qt::LeftButton)
+        {
+            QWindow *handler = window()->windowHandle();
+            if (handler && handler->startSystemMove())
+            {
+                event->accept();
+                return;
+            }
+        }
+    }
+
+     QWidget::mousePressEvent(event);
 }
 
 void Mere::Widgets::WinHeader::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
     m_lock = false;
+
+    QWidget::mouseReleaseEvent(event);
 }
 
 void Mere::Widgets::WinHeader::mouseMoveEvent(QMouseEvent *event)
 {
     if (!m_lock) return;
-    m_parent->move(event->globalPos()- m_pos);
+
+    m_parent->move(event->globalPosition().toPoint() - m_pos);
 
     this->update();
+
+    QWidget::mouseMoveEvent(event);
 }
