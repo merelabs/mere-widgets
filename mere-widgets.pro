@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS MERE_WIDGETS_LIB
 
 SOURCES += \
     src/app.cpp \
+    src/clickablelabel.cpp \
     src/defaultapp.cpp \
     src/defaultwin.cpp \
     src/defaultwinheader.cpp \
@@ -49,6 +50,7 @@ SOURCES += \
 
 HEADERS += \
     src/app.h \
+    src/clickablelabel.h \
     src/defaultapp.h \
     src/defaultwin.h \
     src/defaultwinheader.h \
